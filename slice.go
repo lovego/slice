@@ -18,6 +18,15 @@ func ContainsInt(slice []int, target int) bool {
 	return false
 }
 
+func ContainsInt64(slice []int64, target int64) bool {
+	for _, s := range slice {
+		if s == target {
+			return true
+		}
+	}
+	return false
+}
+
 func IndexString(slice []string, target string) int {
 	for i := 0; i < len(slice); i++ {
 		if slice[i] == target {
@@ -36,7 +45,7 @@ func LastIndexString(slice []string, target string) int {
 	return -1
 }
 
-func RemoveString(slice, toRemove []string) (result []string) {
+func RemoveStrings(slice, toRemove []string) (result []string) {
 	if len(slice) == 0 || len(toRemove) == 0 {
 		return slice
 	}
@@ -52,7 +61,7 @@ func RemoveString(slice, toRemove []string) (result []string) {
 	return
 }
 
-func RemoveInt(slice, toRemove []int) (result []int) {
+func RemoveInts(slice, toRemove []int) (result []int) {
 	if len(slice) == 0 || len(toRemove) == 0 {
 		return slice
 	}
