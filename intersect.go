@@ -17,3 +17,16 @@ func IntersectInt64(left, right []int64) []int64 {
 	}
 	return result
 }
+
+// int64数组是否有交集
+func HasIntersectInt64(left, right []int64) bool {
+	if len(left) == 0 || len(right) == 0 {
+		return false
+	}
+	for _, elem := range left {
+		if ContainsInt64(right, elem) {
+			return true
+		}
+	}
+	return false
+}
