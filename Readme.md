@@ -1,5 +1,5 @@
 # slice
-a union find sets data structure based on map and list in golang.
+slice utils for golang.
 
 [![Build Status](https://travis-ci.org/lovego/slice.svg?branch=master)](https://travis-ci.org/lovego/slice)
 [![Coverage Status](https://img.shields.io/coveralls/github/lovego/slice/master.svg)](https://coveralls.io/github/lovego/slice?branch=master)
@@ -11,8 +11,7 @@ a union find sets data structure based on map and list in golang.
 
 ## Usage
 ```go
-
-fmt.Println(ContainsString([]string{"1", "2"}, "1")) // Prints true
+  fmt.Println(ContainsString([]string{"1", "2"}, "1")) // Prints true
   fmt.Println(ContainsInt([]int{1, 2}, 1))             // Prints true
   fmt.Println(ContainsInt64([]int64{1, 2}, int64(1)))  // Prints true
 
