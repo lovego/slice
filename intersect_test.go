@@ -23,7 +23,9 @@ func TestInersectInt64(t *testing.T) {
 func ExampleHasIntersectInt64() {
 	fmt.Println(HasIntersectInt64([]int64{1, 2}, []int64{2}))
 	fmt.Println(HasIntersectInt64([]int64{1}, []int64{2}))
+	fmt.Println(HasIntersectInt64([]int64{1}, nil))
 	// Output:
 	// true
+	// false
 	// false
 }
