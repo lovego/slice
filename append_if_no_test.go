@@ -5,7 +5,7 @@ import "fmt"
 func ExampleAppendIfNoString() {
 	fmt.Println(AppendIfNoString(nil, "a"))
 	fmt.Println(AppendIfNoString([]string{"a", "b"}, "a"))
-	fmt.Println(AppendIfNoString([]string{"a", "b"}, "c"))
+	fmt.Println(AppendIfNoString([]string{"a", "b"}, "b", "c"))
 	// Output:
 	// [a]
 	// [a b]
@@ -15,7 +15,7 @@ func ExampleAppendIfNoString() {
 func ExampleAppendIfNoInt() {
 	fmt.Println(AppendIfNoInt(nil, 1))
 	fmt.Println(AppendIfNoInt([]int{1, 2}, 1))
-	fmt.Println(AppendIfNoInt([]int{1, 2}, 3))
+	fmt.Println(AppendIfNoInt([]int{1, 2}, 2, 3))
 	// Output:
 	// [1]
 	// [1 2]
@@ -25,7 +25,7 @@ func ExampleAppendIfNoInt() {
 func ExampleAppendIfNoInt64() {
 	fmt.Println(AppendIfNoInt64(nil, 1))
 	fmt.Println(AppendIfNoInt64([]int64{1, 2}, 1))
-	fmt.Println(AppendIfNoInt64([]int64{1, 2}, 3))
+	fmt.Println(AppendIfNoInt64([]int64{1, 2}, 2, 3))
 	// Output:
 	// [1]
 	// [1 2]
