@@ -1,9 +1,23 @@
 package slice
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 )
+
+func ExampleRemoveInt64() {
+	var slice = []int64{1, 2, 3, 10}
+	fmt.Println(RemoveInt64([]int64{}, 1))
+	fmt.Println(RemoveInt64(slice, 2))
+	fmt.Println(RemoveInt64(slice, 3))
+	fmt.Println(RemoveInt64(slice, 10))
+	// Output:
+	// []
+	// [1 3 10]
+	// [1 2 10]
+	// [1 2 3]
+}
 
 func TestRemoveStrings(t *testing.T) {
 	var slice = []string{`1`, `2`, `3`, `4`}

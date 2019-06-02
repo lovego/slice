@@ -47,3 +47,15 @@ func RemoveInts(slice, toRemove []int) (result []int) {
 	}
 	return
 }
+
+func RemoveInt64(slice []int64, toRemove int64) (result []int64) {
+	if len(slice) == 0 {
+		return slice
+	}
+	for _, v := range slice {
+		if v != toRemove {
+			result = append(result, v)
+		}
+	}
+	return
+}
