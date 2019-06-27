@@ -2,6 +2,7 @@ package slice
 
 import "reflect"
 
+// Unique will change original slice
 func Unique(s interface{}, primaryKey func(i int) interface{}) {
 	val := reflect.ValueOf(s)
 	if val.Kind() != reflect.Ptr {
