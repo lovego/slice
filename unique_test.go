@@ -1,8 +1,9 @@
 package slice
 
 import (
+	"encoding/json"
 	"fmt"
-	"hztl3.com/erp/models/libs/utils"
+	"log"
 )
 
 type fakeData struct {
@@ -27,26 +28,15 @@ func ExampleUnique() {
 	Unique(&s, func(i int) interface{} {
 		return keys{s[i].A, s[i].B}
 	})
-	utils.PrintJson(s)
+
+	data, err := json.Marshal(s)
+	if err != nil {
+		log.Panic(err)
+	}
+	fmt.Println(string(data))
 
 	// Output:
-	// [
-	//   {
-	//     "A": 1,
-	//     "B": "1",
-	//     "C": 1
-	//   },
-	//   {
-	//     "A": 2,
-	//     "B": "2",
-	//     "C": 2
-	//   },
-	//   {
-	//     "A": 3,
-	//     "B": "3",
-	//     "C": 3
-	//   }
-	// ]
+	// [{"A":1,"B":"1","C":1},{"A":2,"B":"2","C":2},{"A":3,"B":"3","C":3}]
 }
 
 func ExampleUniqueInt() {
