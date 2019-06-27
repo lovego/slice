@@ -3,7 +3,8 @@ package slice
 import "reflect"
 
 // Unique will change original slice
-func Unique(s interface{}, primaryKey func(i int) interface{}) {
+// if trailing is true, will use the last element.
+func Unique(s interface{}, primaryKey func(i int) interface{}, trailing bool) {
 	val := reflect.ValueOf(s)
 	if val.Kind() != reflect.Ptr {
 		panic(`Unique need pointer`)
@@ -12,18 +13,35 @@ func Unique(s interface{}, primaryKey func(i int) interface{}) {
 	if val.Kind() != reflect.Slice {
 		panic(`Unique need pointer to Slice`)
 	}
-	seen := make(map[interface{}]struct{}, val.Len())
+	length := val.Len()
+	if length == 0 {
+		return
+	}
+	seen := make(map[interface{}]struct{}, length)
 	j := 0
-	for i := 0; i < val.Len(); i++ {
-		key := primaryKey(i)
+	for i := 0; i < length; i++ {
+		cursor := i
+		cursor2 := j
+		if trailing {
+			cursor = length - i - 1
+			cursor2 = length - j - 1
+		}
+
+		key := primaryKey(cursor)
 		if _, ok := seen[key]; ok {
 			continue
 		}
 		seen[key] = struct{}{}
-		val.Index(j).Set(val.Index(i))
+		val.Index(cursor2).Set(val.Index(cursor))
 		j++
 	}
-	val.SetLen(j)
+	start := 0
+	end := j
+	if trailing {
+		start = length - j
+		end = length
+	}
+	val.Set(val.Slice(start, end))
 }
 
 func UniqueInt(s []int) []int {
