@@ -1,5 +1,30 @@
 package slice
 
+import "reflect"
+
+func Unique(s interface{}, primaryKey func(i int) interface{}) {
+	val := reflect.ValueOf(s)
+	if val.Kind() != reflect.Ptr {
+		panic(`Unique need pointer`)
+	}
+	val = val.Elem()
+	if val.Kind() != reflect.Slice {
+		panic(`Unique need pointer to Slice`)
+	}
+	seen := make(map[interface{}]struct{}, val.Len())
+	j := 0
+	for i := 0; i < val.Len(); i++ {
+		key := primaryKey(i)
+		if _, ok := seen[key]; ok {
+			continue
+		}
+		seen[key] = struct{}{}
+		val.Index(j).Set(val.Index(i))
+		j++
+	}
+	val.SetLen(j)
+}
+
 func UniqueInt(s []int) []int {
 	seen := make(map[int]struct{}, len(s))
 	j := 0

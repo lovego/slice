@@ -1,6 +1,53 @@
 package slice
 
-import "fmt"
+import (
+	"fmt"
+	"hztl3.com/erp/models/libs/utils"
+)
+
+type fakeData struct {
+	A int
+	B string
+	C int64
+}
+type keys struct {
+	A int
+	B string
+}
+
+func ExampleUnique() {
+	s := []*fakeData{
+		{1, `1`, 1},
+		{2, `2`, 2},
+		{3, `3`, 3},
+		{1, `1`, 1},
+		{2, `2`, 2},
+	}
+
+	Unique(&s, func(i int) interface{} {
+		return keys{s[i].A, s[i].B}
+	})
+	utils.PrintJson(s)
+
+	// Output:
+	// [
+	//   {
+	//     "A": 1,
+	//     "B": "1",
+	//     "C": 1
+	//   },
+	//   {
+	//     "A": 2,
+	//     "B": "2",
+	//     "C": 2
+	//   },
+	//   {
+	//     "A": 3,
+	//     "B": "3",
+	//     "C": 3
+	//   }
+	// ]
+}
 
 func ExampleUniqueInt() {
 	s := []int{1, 1, 2, 2, 3, 3, 4}
