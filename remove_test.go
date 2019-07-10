@@ -33,6 +33,20 @@ func TestRemoveInts(t *testing.T) {
 	}
 }
 
+func TestRemoveInt64s(t *testing.T) {
+	var slice = []int64{1, 2, 3, 10}
+	var toRemove = []int64{2, 10}
+	var expect = []int64{1, 3}
+	if got := RemoveInt64s(slice, toRemove); !reflect.DeepEqual(got, expect) {
+		t.Errorf("expect %v,got %v", expect, got)
+	}
+	slice = []int64{}
+	toRemove = []int64{}
+	if got := RemoveInt64s(slice, toRemove); !reflect.DeepEqual(got, []int64{}) {
+		t.Errorf("expect %v, got %v", []int64{}, got)
+	}
+}
+
 func TestRemove(t *testing.T) {
 	var slice = []interface{}{`1`, 2, `3`, `4`}
 	var toRemove = []interface{}{2, `4`}
