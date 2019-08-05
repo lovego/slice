@@ -1,6 +1,6 @@
 package slice
 
-func differenceInt64(left, right []int64) []int64 {
+func DifferenceInt64(left, right []int64) []int64 {
 	if len(left) == 0 || len(right) == 0 {
 		return []int64{}
 	}
@@ -14,7 +14,7 @@ func differenceInt64(left, right []int64) []int64 {
 	return result
 }
 
-func differenceString(left, right []string) []string {
+func DifferenceString(left, right []string) []string {
 	if len(left) == 0 || len(right) == 0 {
 		return []string{}
 	}
