@@ -30,3 +30,16 @@ func HasIntersectInt64(left, right []int64) bool {
 	}
 	return false
 }
+
+// string数组是否有交集
+func HasIntersectString(left, right []string) bool {
+	if len(left) == 0 || len(right) == 0 {
+		return false
+	}
+	for _, elem := range left {
+		if ContainsString(right, elem) {
+			return true
+		}
+	}
+	return false
+}
