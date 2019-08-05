@@ -40,16 +40,28 @@ func TestContainsInt64(t *testing.T) {
 
 func ExampleFullContains() {
 
+	fmt.Println(FullContainsInt64([]int64{1, 2}, []int64{2, 1}))
+	fmt.Println(FullContainsString([]string{"1", "2"}, []string{"2", "1"}))
+
 	fmt.Println(FullContainsInt64([]int64{1, 2}, nil))
 	fmt.Println(FullContainsInt64([]int64{1, 2}, []int64{1}))
-	fmt.Println(FullContainsInt64([]int64{1, 2}, []int64{2, 1}))
 	fmt.Println(FullContainsInt64([]int64{1, 2}, []int64{2, 3}))
 	fmt.Println(FullContainsInt64([]int64{1, 2}, []int64{3, 4}))
 
+	fmt.Println(FullContainsString([]string{"1", "2"}, nil))
+	fmt.Println(FullContainsString([]string{"1", "2"}, []string{"1"}))
+	fmt.Println(FullContainsString([]string{"1", "2"}, []string{"2", "3"}))
+	fmt.Println(FullContainsString([]string{"1", "2"}, []string{"3", "4"}))
+
 	// Output:
-	// false
-	// false
 	// true
+	// true
+	// false
+	// false
+	// false
+	// false
+	// false
+	// false
 	// false
 	// false
 }
