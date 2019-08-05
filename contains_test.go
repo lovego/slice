@@ -1,6 +1,7 @@
 package slice
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -35,4 +36,20 @@ func TestContainsInt64(t *testing.T) {
 	if got := ContainsInt64(slice, 4); got {
 		t.Errorf("unexpect got %t", got)
 	}
+}
+
+func ExampleFullContains() {
+
+	fmt.Println(FullContainsInt64([]int64{1, 2}, nil))
+	fmt.Println(FullContainsInt64([]int64{1, 2}, []int64{1}))
+	fmt.Println(FullContainsInt64([]int64{1, 2}, []int64{2, 1}))
+	fmt.Println(FullContainsInt64([]int64{1, 2}, []int64{2, 3}))
+	fmt.Println(FullContainsInt64([]int64{1, 2}, []int64{3, 4}))
+
+	// Output:
+	// false
+	// false
+	// true
+	// false
+	// false
 }
