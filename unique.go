@@ -2,7 +2,7 @@ package slice
 
 import "reflect"
 
-// Unique will change original slice
+// Unique will change the original slice! use copy to keep the original slice.
 // if trailing is true, will use the last element.
 func Unique(s interface{}, primaryKey func(i int) interface{}, trailing bool) {
 	val := reflect.ValueOf(s)
@@ -44,6 +44,7 @@ func Unique(s interface{}, primaryKey func(i int) interface{}, trailing bool) {
 	val.Set(val.Slice(start, end))
 }
 
+// UniqueInt will change the original slice!
 func UniqueInt(s []int) []int {
 	seen := make(map[int]struct{}, len(s))
 	j := 0
@@ -58,6 +59,7 @@ func UniqueInt(s []int) []int {
 	return s[:j]
 }
 
+// UniqueInt64 will change the original slice!
 func UniqueInt64(s []int64) []int64 {
 	seen := make(map[int64]struct{}, len(s))
 	j := 0
@@ -72,6 +74,7 @@ func UniqueInt64(s []int64) []int64 {
 	return s[:j]
 }
 
+// UniqueString will change the original slice!
 func UniqueString(s []string) []string {
 	seen := make(map[string]struct{}, len(s))
 	j := 0
