@@ -1,6 +1,6 @@
 package slice
 
-func SubInt64(left, right []int64) []int64 {
+func DiffInt64(left, right []int64) []int64 {
 	if len(left) == 0 {
 		return []int64{}
 	}
@@ -13,7 +13,7 @@ func SubInt64(left, right []int64) []int64 {
 	return result
 }
 
-func SubString(left, right []string) []string {
+func DiffString(left, right []string) []string {
 	if len(left) == 0 {
 		return []string{}
 	}
