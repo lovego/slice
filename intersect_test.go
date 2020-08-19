@@ -2,22 +2,18 @@ package slice
 
 import (
 	"fmt"
-	"reflect"
-	"testing"
 )
 
-func TestInersectInt64(t *testing.T) {
+func ExampleInersectInt64() {
 	var left = []int64{1, 2, 3, 4}
 	var right = []int64{2, 1}
-	var expect = []int64{2, 1}
-	if got := IntersectInt64(left, right); !reflect.DeepEqual(got, expect) {
-		t.Errorf("expect %v, got %v", expect, got)
-	}
-	left = []int64{}
-	right = []int64{}
-	if got := IntersectInt64(left, right); !reflect.DeepEqual([]int64{}, got) {
-		t.Errorf("expect %v, got %v", []int64{}, got)
-	}
+
+	fmt.Println(IntersectInt64(left, right))
+	fmt.Println(IntersectInt64(left, []int64{0, 5}))
+
+	// Output:
+	// [1 2]
+	// []
 }
 
 func ExampleHasIntersectInt64() {

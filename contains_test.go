@@ -2,40 +2,33 @@ package slice
 
 import (
 	"fmt"
-	"testing"
 )
 
-func TestContainsString(t *testing.T) {
+func ExampleContainsString() {
 	var slice = []string{`1`, `2`, `3`}
-	var target = `2`
-	if got := ContainsString(slice, target); !got {
-		t.Errorf("unexpect got %t", got)
-	}
-	if got := ContainsString(slice, `4`); got {
-		t.Errorf("unexpect got %t", got)
-	}
+	fmt.Println(ContainsString(slice, `2`))
+	fmt.Println(ContainsString(slice, `4`))
+	// Output:
+	// true
+	// false
 }
 
-func TestContainsInt(t *testing.T) {
+func ExampleContainsInt() {
 	var slice = []int{1, 2, 3}
-	var target = 2
-	if got := ContainsInt(slice, target); !got {
-		t.Errorf("unexpect got %t", got)
-	}
-	if got := ContainsInt(slice, 4); got {
-		t.Errorf("unexpect got %t", got)
-	}
+	fmt.Println(ContainsInt(slice, 2))
+	fmt.Println(ContainsInt(slice, 4))
+	// Output:
+	// true
+	// false
 }
 
-func TestContainsInt64(t *testing.T) {
+func ExampleContainsInt64() {
 	var slice = []int64{1, 2, 3}
-	var target = int64(2)
-	if got := ContainsInt64(slice, target); !got {
-		t.Errorf("unexpect got %t", got)
-	}
-	if got := ContainsInt64(slice, 4); got {
-		t.Errorf("unexpect got %t", got)
-	}
+	fmt.Println(ContainsInt64(slice, 2))
+	fmt.Println(ContainsInt64(slice, 4))
+	// Output:
+	// true
+	// false
 }
 
 func ExampleFullContains() {

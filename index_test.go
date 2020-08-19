@@ -1,71 +1,101 @@
 package slice
 
 import (
-	"testing"
+	"fmt"
+	"reflect"
 )
 
-func TestIndexString(t *testing.T) {
-	var slice = []string{`1`, `2`, `3`}
-	var target = `3`
-	if got := IndexString(slice, target); got != 2 {
-		t.Errorf("expect %d, got %d", 2, got)
-	}
-	if got := IndexString(slice, `4`); got != -1 {
-		t.Errorf("expect -1,got %d", got)
-	}
+func ExampleIndexString() {
+	slice := []string{`1`, `2`, `3`}
+	fmt.Println(IndexString(slice, `3`))
+	fmt.Println(IndexString(slice, `4`))
+	// Output:
+	// 2
+	// -1
 }
 
-func TestLastIndexString(t *testing.T) {
-	var slice = []string{`1`, `2`, `3`, `1`}
-	var target = `1`
-	if got := LastIndexString(slice, target); got != 3 {
-		t.Errorf("expect %d, got %d", 3, got)
-	}
-	if got := LastIndexString(slice, `4`); got != -1 {
-		t.Errorf("expect -1,got %d", got)
-	}
+func ExampleLastIndexString() {
+	slice := []string{`1`, `2`, `3`, `1`}
+	fmt.Println(LastIndexString(slice, `1`))
+	fmt.Println(LastIndexString(slice, `4`))
+	// Output:
+	// 3
+	// -1
 }
 
-func TestIndexInt(t *testing.T) {
-	var slice = []int{1, 2, 3, 1}
-	var target = 1
-	if got := IndexInt(slice, target); got != 0 {
-		t.Errorf("expect %d, got %d", 0, got)
-	}
-	if got := IndexInt(slice, 4); got != -1 {
-		t.Errorf("expect -1,got %d", got)
-	}
+func ExampleIndexInt() {
+	slice := []int{1, 2, 3, 1}
+	fmt.Println(IndexInt(slice, 1))
+	fmt.Println(IndexInt(slice, 4))
+	// Output:
+	// 0
+	// -1
 }
 
-func TestLastIndexInt(t *testing.T) {
-	var slice = []int{1, 2, 3, 1, 2}
-	var target = 1
-	if got := LastIndexInt(slice, target); got != 3 {
-		t.Errorf("expect %d, got %d", 3, got)
-	}
-	if got := LastIndexInt(slice, 4); got != -1 {
-		t.Errorf("expect -1,got %d", got)
-	}
+func ExampleLastIndexInt() {
+	slice := []int{1, 2, 3, 1, 2}
+	fmt.Println(LastIndexInt(slice, 1))
+	fmt.Println(LastIndexInt(slice, 4))
+	// Output:
+	// 3
+	// -1
 }
 
-func TestIndexInt64(t *testing.T) {
+func ExampleIndexInt64() {
 	var slice = []int64{1, 2, 3, 1}
-	var target = int64(1)
-	if got := IndexInt64(slice, target); got != 0 {
-		t.Errorf("expect %d, got %d", 0, got)
-	}
-	if got := IndexInt64(slice, 4); got != -1 {
-		t.Errorf("expect -1,got %d", got)
-	}
+	fmt.Println(IndexInt64(slice, 1))
+	fmt.Println(IndexInt64(slice, 4))
+	// Output:
+	// 0
+	// -1
 }
 
-func TestLastIndexInt64(t *testing.T) {
+func ExampleLastIndexInt64() {
 	var slice = []int64{1, 2, 3, 1, 2}
-	var target = int64(1)
-	if got := LastIndexInt64(slice, target); got != 3 {
-		t.Errorf("expect %d, got %d", 3, got)
-	}
-	if got := LastIndexInt64(slice, 4); got != -1 {
-		t.Errorf("expect -1,got %d", got)
-	}
+	fmt.Println(LastIndexInt64(slice, 1))
+	fmt.Println(LastIndexInt64(slice, 4))
+	// Output:
+	// 3
+	// -1
+}
+
+type T struct {
+	Id   int
+	Name string
+}
+
+func ExampleIndex() {
+	var slice = []T{{3, "c"}, {}, {2, "b"}, {9, "f"}}
+	fmt.Println(Index(slice, T{2, "b"}))
+	fmt.Println(Index(slice, T{2, "c"}))
+	// Output:
+	// 2
+	// -1
+}
+
+func ExampleLastIndex() {
+	var slice = []T{{3, "c"}, {}, {2, "b"}, {}, {9, "f"}}
+	fmt.Println(LastIndex(slice, T{}))
+	fmt.Println(LastIndex(slice, T{2, "c"}))
+	// Output:
+	// 3
+	// -1
+}
+
+func ExampleIndexValue() {
+	var slice = reflect.ValueOf([]T{{3, "c"}, {}, {2, "b"}, {9, "f"}})
+	fmt.Println(IndexValue(slice, reflect.ValueOf(T{2, "b"})))
+	fmt.Println(IndexValue(slice, reflect.ValueOf(T{2, "c"})))
+	// Output:
+	// 2
+	// -1
+}
+
+func ExampleLastIndexValue() {
+	var slice = reflect.ValueOf([]T{{3, "c"}, {}, {2, "b"}, {}, {9, "f"}})
+	fmt.Println(LastIndexValue(slice, reflect.ValueOf(T{})))
+	fmt.Println(LastIndexValue(slice, reflect.ValueOf(T{2, "c"})))
+	// Output:
+	// 3
+	// -1
 }

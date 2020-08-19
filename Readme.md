@@ -25,7 +25,7 @@ slice utils for golang.
 
   fmt.Println(IntersectInt64([]int64{2, 1, 3, 1}, []int64{1, 3, 4})) // Prints [1,3]
 
-	fmt.Println(InsertInt64([]int64{2, 3}, 0, 1))         // Prints  [1 2 3]
+  fmt.Println(InsertInt64([]int64{2, 3}, 0, 1))         // Prints  [1 2 3]
   fmt.Println(InsertString([]string{"b", "c"}, 1, "a")) // Prints  [b a c]
 
   fmt.Println(Remove([]interface{}{"2", 1, "3", true}, []interface{}{"1", "3", true}))    // Prints ["2",1]

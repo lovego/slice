@@ -31,3 +31,15 @@ func ExampleAppendIfNoInt64() {
 	// [1 2]
 	// [1 2 3]
 }
+
+func ExampleAppendIfNo() {
+	var slice = []T{{3, "c"}, {}, {2, "b"}, {}, {9, "f"}}
+	fmt.Println(AppendIfNo(slice, T{2, "b"}))
+	fmt.Println(AppendIfNo(slice, T{}))
+	fmt.Println(AppendIfNo(slice, T{}, T{4, "d"}))
+
+	// Output:
+	// [{3 c} {0 } {2 b} {0 } {9 f}]
+	// [{3 c} {0 } {2 b} {0 } {9 f}]
+	// [{3 c} {0 } {2 b} {0 } {9 f} {4 d}]
+}

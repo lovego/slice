@@ -6,11 +6,11 @@ func IntersectInt64(left, right []int64) []int64 {
 		return []int64{}
 	}
 	m := make(map[int64]bool)
-	for _, elem := range left {
+	for _, elem := range right {
 		m[elem] = true
 	}
 	var result []int64
-	for _, elem := range right {
+	for _, elem := range left {
 		if m[elem] {
 			result = append(result, elem)
 		}
