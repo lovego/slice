@@ -61,7 +61,8 @@ func Index(slice interface{}, target interface{}) int {
 		return -1
 	}
 	v := reflect.ValueOf(slice)
-	for i := 0; i < v.Len(); i++ {
+	l := v.Len()
+	for i := 0; i < l; i++ {
 		if v.Index(i).Interface() == target {
 			return i
 		}

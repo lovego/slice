@@ -3,6 +3,7 @@ package slice
 import (
 	"fmt"
 	"reflect"
+	"testing"
 )
 
 func ExampleIndexString() {
@@ -98,4 +99,54 @@ func ExampleLastIndexValue() {
 	// Output:
 	// 3
 	// -1
+}
+
+func BenchmarkIndex(b *testing.B) {
+	slice := []int{1, 2, 3, 1}
+	for i := 0; i < b.N; i++ {
+		Index(slice, int(3))
+	}
+}
+
+func BenchmarkIndexInt(b *testing.B) {
+	slice := []int{1, 2, 3, 1}
+	for i := 0; i < b.N; i++ {
+		IndexInt(slice, 3)
+	}
+}
+
+func BenchmarkReflectValueOf(b *testing.B) {
+	slice := []int{1, 2, 3, 1}
+	for i := 0; i < b.N; i++ {
+		reflect.ValueOf(slice)
+	}
+}
+
+func BenchmarkReflectValueIndex(b *testing.B) {
+	slice := reflect.ValueOf([]int{1, 2, 3, 1})
+	for i := 0; i < b.N; i++ {
+		slice.Index(1)
+	}
+}
+
+func BenchmarkReflectValueInterface(b *testing.B) {
+	v := reflect.ValueOf(1)
+	for i := 0; i < b.N; i++ {
+		v.Interface()
+	}
+}
+
+func BenchmarkReflectIntEqual(b *testing.B) {
+	var x, y int = 1, 2
+	for i := 0; i < b.N; i++ {
+		if x == y {
+		}
+	}
+}
+func BenchmarkReflectIterfaceEqual(b *testing.B) {
+	var x, y interface{} = 1, 2
+	for i := 0; i < b.N; i++ {
+		if x == y {
+		}
+	}
 }

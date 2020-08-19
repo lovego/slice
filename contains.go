@@ -36,7 +36,7 @@ func ContainsInt64(slice []int64, target int64) bool {
 	return false
 }
 
-func FullContainsInt64(slice, target []int64) bool {
+func ContainsAllInt64(slice, target []int64) bool {
 	if len(slice) == 0 && len(target) == 0 {
 		return true
 	}
@@ -54,7 +54,7 @@ func FullContainsInt64(slice, target []int64) bool {
 	return true
 }
 
-func FullContainsString(slice, target []string) bool {
+func ContainsAllString(slice, target []string) bool {
 	if len(slice) == 0 && len(target) == 0 {
 		return true
 	}
