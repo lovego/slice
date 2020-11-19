@@ -1,6 +1,6 @@
 package slice
 
-// int64数组交集
+// int64数组交集，结果跟left顺序一致。
 func IntersectInt64(left, right []int64) []int64 {
 	if len(left) == 0 || len(right) == 0 {
 		return []int64{}
