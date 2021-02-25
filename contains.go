@@ -42,12 +42,12 @@ func ContainsAllInt64(slice, target []int64) bool {
 	}
 
 	left, right := UniqueInt64(slice), UniqueInt64(target)
-	if len(left) != len(right) {
+	if len(left) < len(right) {
 		return false
 	}
 
-	for _, id := range left {
-		if !ContainsInt64(right, id) {
+	for _, id := range right {
+		if !ContainsInt64(left, id) {
 			return false
 		}
 	}
