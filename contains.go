@@ -9,6 +9,19 @@ func ContainsString(slice []string, target string) bool {
 	return false
 }
 
+func ContainsAnyString(slice []string, targets []string) bool {
+	targetMap := map[string]bool{}
+	for _, target := range targets {
+		targetMap[target] = true
+	}
+	for _, s := range slice {
+		if targetMap[s] {
+			return true
+		}
+	}
+	return false
+}
+
 func ContainsInt(slice []int, target int) bool {
 	for _, s := range slice {
 		if s == target {
