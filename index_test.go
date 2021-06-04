@@ -3,62 +3,7 @@ package slice
 import (
 	"fmt"
 	"reflect"
-	"testing"
 )
-
-func ExampleIndexString() {
-	slice := []string{`1`, `2`, `3`}
-	fmt.Println(IndexString(slice, `3`))
-	fmt.Println(IndexString(slice, `4`))
-	// Output:
-	// 2
-	// -1
-}
-
-func ExampleLastIndexString() {
-	slice := []string{`1`, `2`, `3`, `1`}
-	fmt.Println(LastIndexString(slice, `1`))
-	fmt.Println(LastIndexString(slice, `4`))
-	// Output:
-	// 3
-	// -1
-}
-
-func ExampleIndexInt() {
-	slice := []int{1, 2, 3, 1}
-	fmt.Println(IndexInt(slice, 1))
-	fmt.Println(IndexInt(slice, 4))
-	// Output:
-	// 0
-	// -1
-}
-
-func ExampleLastIndexInt() {
-	slice := []int{1, 2, 3, 1, 2}
-	fmt.Println(LastIndexInt(slice, 1))
-	fmt.Println(LastIndexInt(slice, 4))
-	// Output:
-	// 3
-	// -1
-}
-
-func ExampleIndexInt64() {
-	var slice = []int64{1, 2, 3, 1}
-	fmt.Println(IndexInt64(slice, 1))
-	fmt.Println(IndexInt64(slice, 4))
-	// Output:
-	// 0
-	// -1
-}
-
-func ExampleLastIndexInt64() {
-	var slice = []int64{1, 2, 3, 1, 2}
-	fmt.Println(LastIndexInt64(slice, 1))
-	fmt.Println(LastIndexInt64(slice, 4))
-	// Output:
-	// 3
-	// -1
-}
 
 type T struct {
 	Id   int
@@ -67,91 +12,178 @@ type T struct {
 
 func ExampleIndex() {
 	var slice = []T{{3, "c"}, {}, {2, "b"}, {9, "f"}}
-	fmt.Println(Index(slice, T{2, "b"}))
-	fmt.Println(Index(slice, T{2, "c"}))
+	fmt.Println(Index(nil, 3))
 	fmt.Println(Index([]int(nil), 3))
+	fmt.Println(Index(slice, 3))
+	fmt.Println(Index(slice, T{2, "c"}))
+	fmt.Println(Index(slice, T{2, "b"}))
 	// Output:
+	// -1
+	// -1
+	// -1
+	// -1
 	// 2
-	// -1
-	// -1
-}
-
-func ExampleLastIndex() {
-	var slice = []T{{3, "c"}, {}, {2, "b"}, {}, {9, "f"}}
-	fmt.Println(LastIndex(slice, T{}))
-	fmt.Println(LastIndex(slice, T{2, "c"}))
-	// Output:
-	// 3
-	// -1
 }
 
 func ExampleIndexValue() {
 	var slice = reflect.ValueOf([]T{{3, "c"}, {}, {2, "b"}, {9, "f"}})
-	fmt.Println(IndexValue(slice, reflect.ValueOf(T{2, "b"})))
-	fmt.Println(IndexValue(slice, reflect.ValueOf(T{2, "c"})))
 	fmt.Println(IndexValue(reflect.ValueOf([]int(nil)), reflect.ValueOf(3)))
+	fmt.Println(IndexValue(slice, reflect.ValueOf(3)))
+	fmt.Println(IndexValue(slice, reflect.ValueOf(T{2, "c"})))
+	fmt.Println(IndexValue(slice, reflect.ValueOf(T{2, "b"})))
 
 	// Output:
+	// -1
+	// -1
+	// -1
 	// 2
-	// -1
-	// -1
 }
 
-func ExampleLastIndexValue() {
-	var slice = reflect.ValueOf([]T{{3, "c"}, {}, {2, "b"}, {}, {9, "f"}})
-	fmt.Println(LastIndexValue(slice, reflect.ValueOf(T{})))
-	fmt.Println(LastIndexValue(slice, reflect.ValueOf(T{2, "c"})))
+func ExampleIndexInterface() {
+	slice := []interface{}{true, `1`, 2, `3`}
+	fmt.Println(IndexInterface(nil, `3`))
+	fmt.Println(IndexInterface(slice, 0))
+	fmt.Println(IndexInterface(slice, `2`))
+	fmt.Println(IndexInterface(slice, true))
+	fmt.Println(IndexInterface(slice, 2))
 	// Output:
-	// 3
 	// -1
+	// -1
+	// -1
+	// 0
+	// 2
 }
 
-func BenchmarkIndex(b *testing.B) {
-	slice := []int{1, 2, 3, 1}
-	for i := 0; i < b.N; i++ {
-		Index(slice, int(3))
-	}
+func ExampleIndexString() {
+	slice := []string{`1`, `2`, `3`}
+	fmt.Println(IndexString(nil, `3`))
+	fmt.Println(IndexString(slice, `0`))
+	fmt.Println(IndexString(slice, `1`))
+	fmt.Println(IndexString(slice, `3`))
+	// Output:
+	// -1
+	// -1
+	// 0
+	// 2
 }
 
-func BenchmarkIndexInt(b *testing.B) {
-	slice := []int{1, 2, 3, 1}
-	for i := 0; i < b.N; i++ {
-		IndexInt(slice, 3)
-	}
+func ExampleIndexInt() {
+	slice := []int{1, 2, 3}
+	fmt.Println(IndexInt(nil, 3))
+	fmt.Println(IndexInt(slice, 0))
+	fmt.Println(IndexInt(slice, 1))
+	fmt.Println(IndexInt(slice, 3))
+	// Output:
+	// -1
+	// -1
+	// 0
+	// 2
 }
-
-func BenchmarkReflectValueOf(b *testing.B) {
-	slice := []int{1, 2, 3, 1}
-	for i := 0; i < b.N; i++ {
-		reflect.ValueOf(slice)
-	}
+func ExampleIndexInt8() {
+	slice := []int8{1, 2, 3}
+	fmt.Println(IndexInt8(nil, 3))
+	fmt.Println(IndexInt8(slice, 0))
+	fmt.Println(IndexInt8(slice, 1))
+	fmt.Println(IndexInt8(slice, 3))
+	// Output:
+	// -1
+	// -1
+	// 0
+	// 2
 }
-
-func BenchmarkReflectValueIndex(b *testing.B) {
-	slice := reflect.ValueOf([]int{1, 2, 3, 1})
-	for i := 0; i < b.N; i++ {
-		slice.Index(1)
-	}
+func ExampleIndexInt16() {
+	slice := []int16{1, 2, 3}
+	fmt.Println(IndexInt16(nil, 3))
+	fmt.Println(IndexInt16(slice, 0))
+	fmt.Println(IndexInt16(slice, 1))
+	fmt.Println(IndexInt16(slice, 3))
+	// Output:
+	// -1
+	// -1
+	// 0
+	// 2
 }
-
-func BenchmarkReflectValueInterface(b *testing.B) {
-	v := reflect.ValueOf(1)
-	for i := 0; i < b.N; i++ {
-		v.Interface()
-	}
+func ExampleIndexInt32() {
+	slice := []int32{1, 2, 3}
+	fmt.Println(IndexInt32(nil, 3))
+	fmt.Println(IndexInt32(slice, 0))
+	fmt.Println(IndexInt32(slice, 1))
+	fmt.Println(IndexInt32(slice, 3))
+	// Output:
+	// -1
+	// -1
+	// 0
+	// 2
 }
-
-func BenchmarkReflectIntEqual(b *testing.B) {
-	var x, y int = 1, 2
-	for i := 0; i < b.N; i++ {
-		if x == y {
-		}
-	}
+func ExampleIndexInt64() {
+	slice := []int64{1, 2, 3}
+	fmt.Println(IndexInt64(nil, 3))
+	fmt.Println(IndexInt64(slice, 0))
+	fmt.Println(IndexInt64(slice, 1))
+	fmt.Println(IndexInt64(slice, 3))
+	// Output:
+	// -1
+	// -1
+	// 0
+	// 2
 }
-func BenchmarkReflectIterfaceEqual(b *testing.B) {
-	var x, y interface{} = 1, 2
-	for i := 0; i < b.N; i++ {
-		if x == y {
-		}
-	}
+func ExampleIndexUint() {
+	slice := []uint{1, 2, 3}
+	fmt.Println(IndexUint(nil, 3))
+	fmt.Println(IndexUint(slice, 0))
+	fmt.Println(IndexUint(slice, 1))
+	fmt.Println(IndexUint(slice, 3))
+	// Output:
+	// -1
+	// -1
+	// 0
+	// 2
+}
+func ExampleIndexUint8() {
+	slice := []uint8{1, 2, 3}
+	fmt.Println(IndexUint8(nil, 3))
+	fmt.Println(IndexUint8(slice, 0))
+	fmt.Println(IndexUint8(slice, 1))
+	fmt.Println(IndexUint8(slice, 3))
+	// Output:
+	// -1
+	// -1
+	// 0
+	// 2
+}
+func ExampleIndexUint16() {
+	slice := []uint16{1, 2, 3}
+	fmt.Println(IndexUint16(nil, 3))
+	fmt.Println(IndexUint16(slice, 0))
+	fmt.Println(IndexUint16(slice, 1))
+	fmt.Println(IndexUint16(slice, 3))
+	// Output:
+	// -1
+	// -1
+	// 0
+	// 2
+}
+func ExampleIndexUint32() {
+	slice := []uint32{1, 2, 3}
+	fmt.Println(IndexUint32(nil, 3))
+	fmt.Println(IndexUint32(slice, 0))
+	fmt.Println(IndexUint32(slice, 1))
+	fmt.Println(IndexUint32(slice, 3))
+	// Output:
+	// -1
+	// -1
+	// 0
+	// 2
+}
+func ExampleIndexUint64() {
+	slice := []uint64{1, 2, 3}
+	fmt.Println(IndexUint64(nil, 3))
+	fmt.Println(IndexUint64(slice, 0))
+	fmt.Println(IndexUint64(slice, 1))
+	fmt.Println(IndexUint64(slice, 3))
+	// Output:
+	// -1
+	// -1
+	// 0
+	// 2
 }

@@ -2,7 +2,31 @@ package slice
 
 import "reflect"
 
-func IndexString(slice []string, target string) int {
+func Index(slice interface{}, target interface{}) int {
+	if slice == nil {
+		return -1
+	}
+	return index(reflect.ValueOf(slice), target)
+}
+
+func IndexValue(slice, target reflect.Value) int {
+	if slice.Len() == 0 {
+		return -1
+	}
+	return index(slice, target.Interface())
+}
+
+func index(slice reflect.Value, target interface{}) int {
+	length := slice.Len()
+	for i := 0; i < length; i++ {
+		if slice.Index(i).Interface() == target {
+			return i
+		}
+	}
+	return -1
+}
+
+func IndexInterface(slice []interface{}, target interface{}) int {
 	for i := 0; i < len(slice); i++ {
 		if slice[i] == target {
 			return i
@@ -11,8 +35,8 @@ func IndexString(slice []string, target string) int {
 	return -1
 }
 
-func LastIndexString(slice []string, target string) int {
-	for i := len(slice) - 1; i >= 0; i-- {
+func IndexString(slice []string, target string) int {
+	for i := 0; i < len(slice); i++ {
 		if slice[i] == target {
 			return i
 		}
@@ -28,16 +52,30 @@ func IndexInt(slice []int, target int) int {
 	}
 	return -1
 }
-
-func LastIndexInt(slice []int, target int) int {
-	for i := len(slice) - 1; i >= 0; i-- {
+func IndexInt8(slice []int8, target int8) int {
+	for i := 0; i < len(slice); i++ {
 		if slice[i] == target {
 			return i
 		}
 	}
 	return -1
 }
-
+func IndexInt16(slice []int16, target int16) int {
+	for i := 0; i < len(slice); i++ {
+		if slice[i] == target {
+			return i
+		}
+	}
+	return -1
+}
+func IndexInt32(slice []int32, target int32) int {
+	for i := 0; i < len(slice); i++ {
+		if slice[i] == target {
+			return i
+		}
+	}
+	return -1
+}
 func IndexInt64(slice []int64, target int64) int {
 	for i := 0; i < len(slice); i++ {
 		if slice[i] == target {
@@ -47,62 +85,41 @@ func IndexInt64(slice []int64, target int64) int {
 	return -1
 }
 
-func LastIndexInt64(slice []int64, target int64) int {
-	for i := len(slice) - 1; i >= 0; i-- {
+func IndexUint(slice []uint, target uint) int {
+	for i := 0; i < len(slice); i++ {
 		if slice[i] == target {
 			return i
 		}
 	}
 	return -1
 }
-
-func Index(slice interface{}, target interface{}) int {
-	if slice == nil {
-		return -1
-	}
-	v := reflect.ValueOf(slice)
-	l := v.Len()
-	for i := 0; i < l; i++ {
-		if v.Index(i).Interface() == target {
+func IndexUint8(slice []uint8, target uint8) int {
+	for i := 0; i < len(slice); i++ {
+		if slice[i] == target {
 			return i
 		}
 	}
 	return -1
 }
-
-func LastIndex(slice interface{}, target interface{}) int {
-	if slice == nil {
-		return -1
-	}
-	v := reflect.ValueOf(slice)
-	for i := v.Len() - 1; i >= 0; i-- {
-		if v.Index(i).Interface() == target {
+func IndexUint16(slice []uint16, target uint16) int {
+	for i := 0; i < len(slice); i++ {
+		if slice[i] == target {
 			return i
 		}
 	}
 	return -1
 }
-
-func IndexValue(slice, target reflect.Value) int {
-	if slice.Len() == 0 {
-		return -1
-	}
-	t := target.Interface()
-	for i := 0; i < slice.Len(); i++ {
-		if slice.Index(i).Interface() == t {
+func IndexUint32(slice []uint32, target uint32) int {
+	for i := 0; i < len(slice); i++ {
+		if slice[i] == target {
 			return i
 		}
 	}
 	return -1
 }
-
-func LastIndexValue(slice, target reflect.Value) int {
-	if slice.Len() == 0 {
-		return -1
-	}
-	t := target.Interface()
-	for i := slice.Len() - 1; i >= 0; i-- {
-		if slice.Index(i).Interface() == t {
+func IndexUint64(slice []uint64, target uint64) int {
+	for i := 0; i < len(slice); i++ {
+		if slice[i] == target {
 			return i
 		}
 	}

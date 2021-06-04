@@ -1,68 +1,59 @@
 package slice
 
-func ContainsString(slice []string, target string) bool {
-	for _, s := range slice {
-		if s == target {
-			return true
-		}
-	}
-	return false
+import "reflect"
+
+func Contains(slice interface{}, target interface{}) bool {
+	return Index(slice, target) >= 0
 }
 
-func ContainsAnyString(slice []string, targets []string) bool {
-	targetMap := map[string]bool{}
-	for _, target := range targets {
-		targetMap[target] = true
-	}
-	for _, s := range slice {
-		if targetMap[s] {
-			return true
-		}
-	}
-	return false
+func ContainsValue(slice reflect.Value, target reflect.Value) bool {
+	return IndexValue(slice, target) >= 0
+}
+
+func ContainsInterface(slice []interface{}, target interface{}) bool {
+	return IndexInterface(slice, target) >= 0
+}
+
+func ContainsString(slice []string, target string) bool {
+	return IndexString(slice, target) >= 0
 }
 
 func ContainsInt(slice []int, target int) bool {
-	for _, s := range slice {
-		if s == target {
-			return true
-		}
-	}
-	return false
+	return IndexInt(slice, target) >= 0
 }
 
 func ContainsInt8(slice []int8, target int8) bool {
-	for _, s := range slice {
-		if s == target {
-			return true
-		}
-	}
-	return false
+	return IndexInt8(slice, target) >= 0
+}
+
+func ContainsInt16(slice []int16, target int16) bool {
+	return IndexInt16(slice, target) >= 0
+}
+
+func ContainsInt32(slice []int32, target int32) bool {
+	return IndexInt32(slice, target) >= 0
 }
 
 func ContainsInt64(slice []int64, target int64) bool {
-	for _, s := range slice {
-		if s == target {
-			return true
-		}
-	}
-	return false
+	return IndexInt64(slice, target) >= 0
 }
 
-func ContainsAllInt64(slice, target []int64) bool {
-	for _, id := range target {
-		if !ContainsInt64(slice, id) {
-			return false
-		}
-	}
-	return true
+func ContainsUint(slice []uint, target uint) bool {
+	return IndexUint(slice, target) >= 0
 }
 
-func ContainsAllString(slice, target []string) bool {
-	for _, id := range target {
-		if !ContainsString(slice, id) {
-			return false
-		}
-	}
-	return true
+func ContainsUint8(slice []uint8, target uint8) bool {
+	return IndexUint8(slice, target) >= 0
+}
+
+func ContainsUint16(slice []uint16, target uint16) bool {
+	return IndexUint16(slice, target) >= 0
+}
+
+func ContainsUint32(slice []uint32, target uint32) bool {
+	return IndexUint32(slice, target) >= 0
+}
+
+func ContainsUint64(slice []uint64, target uint64) bool {
+	return IndexUint64(slice, target) >= 0
 }
