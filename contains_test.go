@@ -22,9 +22,9 @@ func ExampleContains() {
 
 func ExampleContainsValue() {
 	var slice = reflect.ValueOf([]interface{}{`1`, 2, `3`})
-	fmt.Println(ContainsValue(slice, reflect.ValueOf(2)))
-	fmt.Println(ContainsValue(slice, reflect.ValueOf(`2`)))
-	fmt.Println(ContainsValue(reflect.ValueOf([]int{}), reflect.ValueOf(2)))
+	fmt.Println(ContainsValue(slice, 2))
+	fmt.Println(ContainsValue(slice, `2`))
+	fmt.Println(ContainsValue(reflect.ValueOf([]int{}), 2))
 	// Output:
 	// true
 	// false

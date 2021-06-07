@@ -6,19 +6,10 @@ func ContainsAny(slice interface{}, targets ...interface{}) bool {
 	if slice == nil {
 		return false
 	}
-	sliceValue := reflect.ValueOf(slice)
-	if sliceValue.Len() == 0 {
-		return false
-	}
-	for _, target := range targets {
-		if index(sliceValue, target) >= 0 {
-			return true
-		}
-	}
-	return false
+	return ContainsAnyValue(reflect.ValueOf(slice), targets...)
 }
 
-func ContainsAnyValue(slice reflect.Value, targets ...reflect.Value) bool {
+func ContainsAnyValue(slice reflect.Value, targets ...interface{}) bool {
 	if slice.Len() == 0 {
 		return false
 	}

@@ -33,11 +33,11 @@ func ExampleContainsAny_2() {
 }
 
 func ExampleContainsAnyValue() {
-	fmt.Println(ContainsAnyValue(reflect.ValueOf([]int{}), reflect.ValueOf(4)))
+	fmt.Println(ContainsAnyValue(reflect.ValueOf([]int{}), 4))
 	var slice = reflect.ValueOf([]interface{}{`1`, 2, `3`})
-	fmt.Println(ContainsAnyValue(slice, reflect.ValueOf(2), reflect.ValueOf(`3`)))
-	fmt.Println(ContainsAnyValue(slice, reflect.ValueOf(`x`), reflect.ValueOf(`3`)))
-	fmt.Println(ContainsAnyValue(slice, reflect.ValueOf(`x`), reflect.ValueOf(4)))
+	fmt.Println(ContainsAnyValue(slice, 2, `3`))
+	fmt.Println(ContainsAnyValue(slice, `x`, `3`))
+	fmt.Println(ContainsAnyValue(slice, `x`, 4))
 	// Output:
 	// false
 	// true

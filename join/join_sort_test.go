@@ -1,4 +1,4 @@
-package union
+package join
 
 import (
 	"reflect"
@@ -7,7 +7,7 @@ import (
 
 type susCase [2][][2]interface{}
 
-func TestUnionSort(t *testing.T) {
+func TestJoinSort(t *testing.T) {
 	var nilResult [][2]interface{}
 	var cases = []susCase{
 		susCase{nilResult, nilResult},
@@ -143,7 +143,7 @@ func TestUnionSort(t *testing.T) {
 	}
 	for _, testCase := range cases {
 		got := testCase[0]
-		UnionSort(got, `V`)
+		JoinSort(got, `V`)
 		expect := testCase[1]
 
 		if !reflect.DeepEqual(got, expect) {

@@ -1,22 +1,22 @@
-package union
+package join
 
 import (
 	"reflect"
 	"sort"
 )
 
-func UnionSort(data [][2]interface{}, key string) {
-	sort.Sort(sortableUnion{key, data})
+func JoinSort(data [][2]interface{}, key string) {
+	sort.Sort(sortableJoin{key, data})
 }
 
-type sortableUnion struct {
+type sortableJoin struct {
 	sort string
 	data [][2]interface{}
 }
 
-func (d sortableUnion) Len() int { return len(d.data) }
+func (d sortableJoin) Len() int { return len(d.data) }
 
-func (d sortableUnion) Less(i, j int) bool {
+func (d sortableJoin) Less(i, j int) bool {
 	iv := d.value(i, 0, d.sort)
 	jv := d.value(j, 0, d.sort)
 	if iv == nil && jv == nil {
@@ -26,7 +26,7 @@ func (d sortableUnion) Less(i, j int) bool {
 	return d.less(iv, jv)
 }
 
-func (d sortableUnion) less(iv, jv interface{}) bool {
+func (d sortableJoin) less(iv, jv interface{}) bool {
 	if iv != nil && jv != nil {
 		switch v := iv.(type) {
 		case int:
@@ -43,7 +43,7 @@ func (d sortableUnion) less(iv, jv interface{}) bool {
 	}
 }
 
-func (d sortableUnion) value(index, which int, name string) interface{} {
+func (d sortableJoin) value(index, which int, name string) interface{} {
 	o := d.data[index][which]
 	if o == nil {
 		return nil
@@ -56,6 +56,6 @@ func (d sortableUnion) value(index, which int, name string) interface{} {
 	}
 }
 
-func (d sortableUnion) Swap(i, j int) {
+func (d sortableJoin) Swap(i, j int) {
 	d.data[i], d.data[j] = d.data[j], d.data[i]
 }

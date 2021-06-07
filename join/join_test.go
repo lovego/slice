@@ -1,4 +1,4 @@
-package union
+package join
 
 import (
 	"reflect"
@@ -14,7 +14,7 @@ type s struct {
 
 type m map[string]interface{}
 
-func TestUnion(t *testing.T) {
+func TestJoin(t *testing.T) {
 	var nilResult [][2]interface{}
 	var cases = []suCase{
 		suCase{nil, nil, nilResult},
@@ -119,7 +119,7 @@ func TestUnion(t *testing.T) {
 		},
 	}
 	for _, testCase := range cases {
-		got := Union(testCase[0], testCase[1], `Name`)
+		got := FullJoin(testCase[0], testCase[1], `Name`)
 		expect := testCase[2].([][2]interface{})
 
 		if !reflect.DeepEqual(got, expect) {

@@ -4,20 +4,13 @@ import "reflect"
 
 // AppendIfNo append value in targets to slice if slice has no this value.
 func AppendIfNo(slice interface{}, targets ...interface{}) interface{} {
-	sliceValue := reflect.ValueOf(slice)
-	for i := range targets {
-		target := reflect.ValueOf(targets[i])
-		if IndexValue(sliceValue, target) < 0 {
-			sliceValue = reflect.Append(sliceValue, target)
-		}
-	}
-	return sliceValue.Interface()
+	return AppendIfNoValue(reflect.ValueOf(slice), targets...).Interface()
 }
 
-func AppendIfNoValue(slice reflect.Value, targets ...reflect.Value) reflect.Value {
+func AppendIfNoValue(slice reflect.Value, targets ...interface{}) reflect.Value {
 	for _, target := range targets {
-		if IndexValue(slice, target) < 0 {
-			slice = reflect.Append(slice, target)
+		if !ContainsValue(slice, target) {
+			slice = reflect.Append(slice, reflect.ValueOf(target))
 		}
 	}
 	return slice

@@ -1,20 +1,20 @@
-package union
+package join
 
 import (
 	"reflect"
 )
 
-func Union(a, b interface{}, keyName string) [][2]interface{} {
+func FullJoin(a, b interface{}, keyName string) [][2]interface{} {
 	aV, bV, swapped := makeABValue(a, b)
 	bM := makeBMap(bV, keyName)
-	result := unionAB(aV, bM, keyName, swapped)
+	result := fullJoin(aV, bM, keyName, swapped)
 	if len(bM) > 0 {
-		result = addBvRemainder(result, bV, bM, keyName, swapped)
+		result = addBVRemainder(result, bV, bM, keyName, swapped)
 	}
 	return result
 }
 
-func unionAB(
+func fullJoin(
 	aV reflect.Value, bM map[string]interface{}, keyName string, swapped bool,
 ) [][2]interface{} {
 	var result [][2]interface{}
@@ -35,7 +35,7 @@ func unionAB(
 	return result
 }
 
-func addBvRemainder(result [][2]interface{},
+func addBVRemainder(result [][2]interface{},
 	bV reflect.Value, bM map[string]interface{}, keyName string, swapped bool,
 ) [][2]interface{} {
 	length := bV.Len()

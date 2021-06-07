@@ -4,7 +4,7 @@ import "reflect"
 
 // Substract substracts right from left.
 func Substract(left, right interface{}) interface{} {
-	if left == nil || right == nil {
+	if left == nil {
 		return nil
 	}
 	return SubstractValue(reflect.ValueOf(left), reflect.ValueOf(right)).Interface()
@@ -14,12 +14,12 @@ func Substract(left, right interface{}) interface{} {
 func SubstractValue(left, right reflect.Value) reflect.Value {
 	var result = reflect.Zero(left.Type())
 	length := left.Len()
-	if length == 0 || right.Len() == 0 {
+	if length == 0 {
 		return result
 	}
 	for i := 0; i < length; i++ {
 		v := left.Index(i)
-		if !ContainsValue(right, v) {
+		if !right.IsValid() || !ContainsValue(right, v.Interface()) {
 			result = reflect.Append(result, v)
 		}
 	}

@@ -17,10 +17,10 @@ func ExampleLastIndex() {
 }
 
 func ExampleLastIndexValue() {
-	fmt.Println(LastIndexValue(reflect.ValueOf([]T{}), reflect.ValueOf(T{})))
+	fmt.Println(LastIndexValue(reflect.ValueOf([]T{}), T{}))
 	var slice = reflect.ValueOf([]T{{3, "c"}, {}, {2, "b"}, {}, {9, "f"}})
-	fmt.Println(LastIndexValue(slice, reflect.ValueOf(T{})))
-	fmt.Println(LastIndexValue(slice, reflect.ValueOf(T{2, "c"})))
+	fmt.Println(LastIndexValue(slice, T{}))
+	fmt.Println(LastIndexValue(slice, T{2, "c"}))
 	// Output:
 	// -1
 	// 3

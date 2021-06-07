@@ -19,9 +19,9 @@ func ExampleAppendIfNo() {
 
 func ExampleAppendIfNoValue() {
 	var slice = reflect.ValueOf([]T{{3, "c"}, {}, {2, "b"}, {}, {9, "f"}})
-	fmt.Println(AppendIfNoValue(slice, reflect.ValueOf(T{2, "b"})))
-	fmt.Println(AppendIfNoValue(slice, reflect.ValueOf(T{})))
-	fmt.Println(AppendIfNoValue(slice, reflect.ValueOf(T{}), reflect.ValueOf(T{4, "d"})))
+	fmt.Println(AppendIfNoValue(slice, T{2, "b"}))
+	fmt.Println(AppendIfNoValue(slice, T{}))
+	fmt.Println(AppendIfNoValue(slice, T{}, T{4, "d"}))
 
 	// Output:
 	// [{3 c} {0 } {2 b} {0 } {9 f}]

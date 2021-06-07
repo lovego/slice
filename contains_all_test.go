@@ -34,9 +34,9 @@ func ExampleContainsAll_2() {
 
 func ExampleContainsAllValue() {
 	var slice = reflect.ValueOf([]interface{}{`1`, 2, `3`})
-	fmt.Println(ContainsAllValue(slice, reflect.ValueOf(2), reflect.ValueOf(`3`)))
-	fmt.Println(ContainsAllValue(slice, reflect.ValueOf(`2`), reflect.ValueOf(`3`)))
-	fmt.Println(ContainsAllValue(reflect.ValueOf([]int{}), reflect.ValueOf(2)))
+	fmt.Println(ContainsAllValue(slice, 2, `3`))
+	fmt.Println(ContainsAllValue(slice, `2`, `3`))
+	fmt.Println(ContainsAllValue(reflect.ValueOf([]int{}), 2))
 	// Output:
 	// true
 	// false

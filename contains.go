@@ -6,7 +6,7 @@ func Contains(slice interface{}, target interface{}) bool {
 	return Index(slice, target) >= 0
 }
 
-func ContainsValue(slice reflect.Value, target reflect.Value) bool {
+func ContainsValue(slice reflect.Value, target interface{}) bool {
 	return IndexValue(slice, target) >= 0
 }
 

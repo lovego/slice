@@ -3,6 +3,7 @@ package slice
 import "reflect"
 
 // Intersect returns intersection of left and right, in the left order.
+// The duplicate members in left are kept.
 func Intersect(left, right interface{}) interface{} {
 	if left == nil || right == nil {
 		return nil
@@ -11,6 +12,7 @@ func Intersect(left, right interface{}) interface{} {
 }
 
 // IntersectValue returns intersection of left and right, in the left order.
+// The duplicate members in left are kept.
 func IntersectValue(left, right reflect.Value) reflect.Value {
 	var result = reflect.Zero(left.Type())
 	length := left.Len()
@@ -19,7 +21,7 @@ func IntersectValue(left, right reflect.Value) reflect.Value {
 	}
 	for i := 0; i < length; i++ {
 		v := left.Index(i)
-		if ContainsValue(right, v) {
+		if right.IsValid() && ContainsValue(right, v.Interface()) {
 			result = reflect.Append(result, v)
 		}
 	}
@@ -27,6 +29,7 @@ func IntersectValue(left, right reflect.Value) reflect.Value {
 }
 
 // IntersectInterface returns intersection of left and right, in the left order.
+// The duplicate members in left are kept.
 func IntersectInterface(left, right []interface{}) []interface{} {
 	var result []interface{}
 	if len(left) == 0 || len(right) == 0 {
@@ -41,6 +44,7 @@ func IntersectInterface(left, right []interface{}) []interface{} {
 }
 
 // IntersectString returns intersection of left and right, in the left order.
+// The duplicate members in left are kept.
 func IntersectString(left, right []string) []string {
 	var result []string
 	if len(left) == 0 || len(right) == 0 {
@@ -55,6 +59,7 @@ func IntersectString(left, right []string) []string {
 }
 
 // IntersectInt returns intersection of left and right, in the left order.
+// The duplicate members in left are kept.
 func IntersectInt(left, right []int) []int {
 	var result []int
 	if len(left) == 0 || len(right) == 0 {
@@ -69,6 +74,7 @@ func IntersectInt(left, right []int) []int {
 }
 
 // IntersectInt8 returns intersection of left and right, in the left order.
+// The duplicate members in left are kept.
 func IntersectInt8(left, right []int8) []int8 {
 	var result []int8
 	if len(left) == 0 || len(right) == 0 {
@@ -83,6 +89,7 @@ func IntersectInt8(left, right []int8) []int8 {
 }
 
 // IntersectInt16 returns intersection of left and right, in the left order.
+// The duplicate members in left are kept.
 func IntersectInt16(left, right []int16) []int16 {
 	var result []int16
 	if len(left) == 0 || len(right) == 0 {
@@ -97,6 +104,7 @@ func IntersectInt16(left, right []int16) []int16 {
 }
 
 // IntersectInt32 returns intersection of left and right, in the left order.
+// The duplicate members in left are kept.
 func IntersectInt32(left, right []int32) []int32 {
 	var result []int32
 	if len(left) == 0 || len(right) == 0 {
@@ -111,6 +119,7 @@ func IntersectInt32(left, right []int32) []int32 {
 }
 
 // IntersectInt64 returns intersection of left and right, in the left order.
+// The duplicate members in left are kept.
 func IntersectInt64(left, right []int64) []int64 {
 	var result []int64
 	if len(left) == 0 || len(right) == 0 {
@@ -125,6 +134,7 @@ func IntersectInt64(left, right []int64) []int64 {
 }
 
 // IntersectUint returns intersection of left and right, in the left order.
+// The duplicate members in left are kept.
 func IntersectUint(left, right []uint) []uint {
 	var result []uint
 	if len(left) == 0 || len(right) == 0 {
@@ -139,6 +149,7 @@ func IntersectUint(left, right []uint) []uint {
 }
 
 // IntersectUint8 returns intersection of left and right, in the left order.
+// The duplicate members in left are kept.
 func IntersectUint8(left, right []uint8) []uint8 {
 	var result []uint8
 	if len(left) == 0 || len(right) == 0 {
@@ -153,6 +164,7 @@ func IntersectUint8(left, right []uint8) []uint8 {
 }
 
 // IntersectUint16 returns intersection of left and right, in the left order.
+// The duplicate members in left are kept.
 func IntersectUint16(left, right []uint16) []uint16 {
 	var result []uint16
 	if len(left) == 0 || len(right) == 0 {
@@ -167,6 +179,7 @@ func IntersectUint16(left, right []uint16) []uint16 {
 }
 
 // IntersectUint32 returns intersection of left and right, in the left order.
+// The duplicate members in left are kept.
 func IntersectUint32(left, right []uint32) []uint32 {
 	var result []uint32
 	if len(left) == 0 || len(right) == 0 {
@@ -181,6 +194,7 @@ func IntersectUint32(left, right []uint32) []uint32 {
 }
 
 // IntersectUint64 returns intersection of left and right, in the left order.
+// The duplicate members in left are kept.
 func IntersectUint64(left, right []uint64) []uint64 {
 	var result []uint64
 	if len(left) == 0 || len(right) == 0 {

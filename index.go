@@ -6,17 +6,10 @@ func Index(slice interface{}, target interface{}) int {
 	if slice == nil {
 		return -1
 	}
-	return index(reflect.ValueOf(slice), target)
+	return IndexValue(reflect.ValueOf(slice), target)
 }
 
-func IndexValue(slice, target reflect.Value) int {
-	if slice.Len() == 0 {
-		return -1
-	}
-	return index(slice, target.Interface())
-}
-
-func index(slice reflect.Value, target interface{}) int {
+func IndexValue(slice reflect.Value, target interface{}) int {
 	length := slice.Len()
 	for i := 0; i < length; i++ {
 		if slice.Index(i).Interface() == target {

@@ -26,11 +26,11 @@ func ExampleIndex() {
 }
 
 func ExampleIndexValue() {
+	fmt.Println(IndexValue(reflect.ValueOf([]int(nil)), 3))
 	var slice = reflect.ValueOf([]T{{3, "c"}, {}, {2, "b"}, {9, "f"}})
-	fmt.Println(IndexValue(reflect.ValueOf([]int(nil)), reflect.ValueOf(3)))
-	fmt.Println(IndexValue(slice, reflect.ValueOf(3)))
-	fmt.Println(IndexValue(slice, reflect.ValueOf(T{2, "c"})))
-	fmt.Println(IndexValue(slice, reflect.ValueOf(T{2, "b"})))
+	fmt.Println(IndexValue(slice, 3))
+	fmt.Println(IndexValue(slice, T{2, "c"}))
+	fmt.Println(IndexValue(slice, T{2, "b"}))
 
 	// Output:
 	// -1
