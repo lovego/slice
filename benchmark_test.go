@@ -1,39 +1,60 @@
 package slice
 
 import (
+	"math/rand"
 	"reflect"
 	"testing"
 )
 
-func BenchmarkIndexGeneric(b *testing.B) {
-	slice := []int{1, 2, 3, 1}
-	for i := 0; i < b.N; i++ {
-		IndexGeneric(slice, int(3))
+var benchSlice []int
+
+func init() {
+	var size = 300
+	benchSlice = make([]int, size)
+	for i := 0; i < size; i++ {
+		benchSlice[i] = rand.Int() % 20
 	}
 }
 
-func BenchmarkIndexInt(b *testing.B) {
-	slice := []int{1, 2, 3, 1}
+func BenchmarkIndexGeneric(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		IndexInt(slice, 3)
+		IndexGeneric(benchSlice, int(3))
+	}
+}
+
+// go test -v -run ^$ -bench BenchmarkIndex_by -benchtime 400x
+// if benchSlice length and bench times:
+// < about 300, Index_bySlice is faster.
+// > about 300, Index_byMap   is faster.
+func BenchmarkIndex_bySlice(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		IndexInt(benchSlice, len(benchSlice)-1)
+	}
+}
+
+func BenchmarkIndex_byMap(b *testing.B) {
+	m := make(map[int]int, len(benchSlice))
+	for i, v := range benchSlice {
+		m[v] = i
+	}
+	for i := 0; i < b.N; i++ {
+		_, _ = m[len(benchSlice)-1]
 	}
 }
 
 func BenchmarkValueOf_reflect(b *testing.B) {
-	slice := []int{1, 2, 3, 1}
 	for i := 0; i < b.N; i++ {
-		reflect.ValueOf(slice)
+		reflect.ValueOf(benchSlice)
 	}
 }
 
-func BenchmarkIndex_slice(b *testing.B) {
-	slice := []int{1, 2, 3, 1}
+func BenchmarkIndex_direct(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		_ = slice[3]
+		_ = benchSlice[3]
 	}
 }
 func BenchmarkIndex_reflect(b *testing.B) {
-	slice := reflect.ValueOf([]int{1, 2, 3, 1})
+	slice := reflect.ValueOf(benchSlice)
 	for i := 0; i < b.N; i++ {
 		_ = slice.Index(3)
 	}
