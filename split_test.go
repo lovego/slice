@@ -2,15 +2,15 @@ package slice
 
 import "fmt"
 
-func ExampleSplit() {
-	fmt.Println(Split([]T{}, T{}))
-	fmt.Println(Split([]T{T{}}, T{}))
-	fmt.Println(Split([]T{T{1, "a"}}, T{}))
-	fmt.Println(Split([]T{T{1, "a"}, T{2, "b"}}, T{}))
-	fmt.Println(Split([]T{T{1, "a"}, T{2, "b"}, T{}}, T{}))
-	fmt.Println(Split([]T{T{1, "a"}, T{2, "b"}, T{}, T{3, "c"}}, T{}))
-	fmt.Println(Split([]T{T{1, "a"}, T{2, "b"}, T{}, T{3, "c"}, T{4, "d"}}, T{}))
-	fmt.Println(Split([]T{T{1, "a"}, T{2, "b"}, T{}, T{3, "c"}, T{4, "d"}, T{}}, T{}))
+func ExampleSplitGeneric() {
+	fmt.Println(SplitGeneric([]T{}, T{}))
+	fmt.Println(SplitGeneric([]T{T{}}, T{}))
+	fmt.Println(SplitGeneric([]T{T{1, "a"}}, T{}))
+	fmt.Println(SplitGeneric([]T{T{1, "a"}, T{2, "b"}}, T{}))
+	fmt.Println(SplitGeneric([]T{T{1, "a"}, T{2, "b"}, T{}}, T{}))
+	fmt.Println(SplitGeneric([]T{T{1, "a"}, T{2, "b"}, T{}, T{3, "c"}}, T{}))
+	fmt.Println(SplitGeneric([]T{T{1, "a"}, T{2, "b"}, T{}, T{3, "c"}, T{4, "d"}}, T{}))
+	fmt.Println(SplitGeneric([]T{T{1, "a"}, T{2, "b"}, T{}, T{3, "c"}, T{4, "d"}, T{}}, T{}))
 
 	// Output:
 	// []

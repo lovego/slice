@@ -3,7 +3,7 @@ package slice
 import "reflect"
 
 // Insert insert value at index i, it panics if i > len(slice).
-func Insert(slice interface{}, i int, value interface{}) interface{} {
+func InsertGeneric(slice interface{}, i int, value interface{}) interface{} {
 	return InsertValue(reflect.ValueOf(slice), i, reflect.ValueOf(value))
 }
 

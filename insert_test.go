@@ -4,12 +4,12 @@ import (
 	"fmt"
 )
 
-func ExampleInsert() {
-	fmt.Println(Insert([]string(nil), 0, "a"))
-	fmt.Println(Insert([]string{}, 0, "a"))
-	fmt.Println(Insert([]string{"b", "c"}, 0, "a"))
-	fmt.Println(Insert([]string{"b", "c"}, 1, "a"))
-	fmt.Println(Insert([]string{"b", "c"}, 2, "a"))
+func ExampleInsertGeneric() {
+	fmt.Println(InsertGeneric([]string(nil), 0, "a"))
+	fmt.Println(InsertGeneric([]string{}, 0, "a"))
+	fmt.Println(InsertGeneric([]string{"b", "c"}, 0, "a"))
+	fmt.Println(InsertGeneric([]string{"b", "c"}, 1, "a"))
+	fmt.Println(InsertGeneric([]string{"b", "c"}, 2, "a"))
 	// Output:
 	// [a]
 	// [a]

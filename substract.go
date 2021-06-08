@@ -3,7 +3,7 @@ package slice
 import "reflect"
 
 // Substract substracts right from left.
-func Substract(left, right interface{}) interface{} {
+func SubstractGeneric(left, right interface{}) interface{} {
 	if left == nil {
 		return nil
 	}

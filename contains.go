@@ -2,8 +2,12 @@ package slice
 
 import "reflect"
 
-func Contains(slice interface{}, target interface{}) bool {
-	return Index(slice, target) >= 0
+func Contains(length int, fun func(int) bool) bool {
+	return Index(length, fun) >= 0
+}
+
+func ContainsGeneric(slice interface{}, target interface{}) bool {
+	return IndexGeneric(slice, target) >= 0
 }
 
 func ContainsValue(slice reflect.Value, target interface{}) bool {

@@ -5,10 +5,10 @@ import (
 	"testing"
 )
 
-func BenchmarkIndex(b *testing.B) {
+func BenchmarkIndexGeneric(b *testing.B) {
 	slice := []int{1, 2, 3, 1}
 	for i := 0; i < b.N; i++ {
-		Index(slice, int(3))
+		IndexGeneric(slice, int(3))
 	}
 }
 

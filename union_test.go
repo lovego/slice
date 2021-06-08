@@ -5,14 +5,14 @@ import (
 	"reflect"
 )
 
-func ExampleUnion() {
-	fmt.Println(Union(nil, nil))
+func ExampleUnionGeneric() {
+	fmt.Println(UnionGeneric(nil, nil))
 
 	var left = []T{{3, "c"}, {}, {2, "b"}, {9, "f"}, {2, "b"}}
-	fmt.Println(Union(left, nil))
-	fmt.Println(Union(nil, []T{{3, "c"}, {3, "c"}}))
-	fmt.Println(Union(left, []int64{}))
-	fmt.Println(Union(left, []T{{}, {2, "b"}, {4, "d"}}))
+	fmt.Println(UnionGeneric(left, nil))
+	fmt.Println(UnionGeneric(nil, []T{{3, "c"}, {3, "c"}}))
+	fmt.Println(UnionGeneric(left, []int64{}))
+	fmt.Println(UnionGeneric(left, []T{{}, {2, "b"}, {4, "d"}}))
 	// Output:
 	// <nil>
 	// [{3 c} {0 } {2 b} {9 f} {2 b}]

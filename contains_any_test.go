@@ -5,11 +5,11 @@ import (
 	"reflect"
 )
 
-func ExampleContainsAny() {
-	fmt.Println(ContainsAny(nil))
-	fmt.Println(ContainsAny(nil, T{}))
-	fmt.Println(ContainsAny([]bool{}))
-	fmt.Println(ContainsAny([]bool{}, "xx"))
+func ExampleContainsAnyGeneric() {
+	fmt.Println(ContainsAnyGeneric(nil))
+	fmt.Println(ContainsAnyGeneric(nil, T{}))
+	fmt.Println(ContainsAnyGeneric([]bool{}))
+	fmt.Println(ContainsAnyGeneric([]bool{}, "xx"))
 	// Output:
 	// false
 	// false
@@ -17,13 +17,13 @@ func ExampleContainsAny() {
 	// false
 }
 
-func ExampleContainsAny_2() {
+func ExampleContainsAnyGeneric_2() {
 	var slice = []T{{3, "c"}, {}, {2, "b"}, {9, "f"}}
-	fmt.Println(ContainsAny(slice))
-	fmt.Println(ContainsAny(slice, T{}))
-	fmt.Println(ContainsAny(slice, T{}, T{2, "b"}))
-	fmt.Println(ContainsAny(slice, T{2, "c"}, T{}))
-	fmt.Println(ContainsAny(slice, 2))
+	fmt.Println(ContainsAnyGeneric(slice))
+	fmt.Println(ContainsAnyGeneric(slice, T{}))
+	fmt.Println(ContainsAnyGeneric(slice, T{}, T{2, "b"}))
+	fmt.Println(ContainsAnyGeneric(slice, T{2, "c"}, T{}))
+	fmt.Println(ContainsAnyGeneric(slice, 2))
 	// Output:
 	// false
 	// true

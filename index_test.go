@@ -11,12 +11,24 @@ type T struct {
 }
 
 func ExampleIndex() {
+	fmt.Println(Index(0, func(i int) bool { return true }))
 	var slice = []T{{3, "c"}, {}, {2, "b"}, {9, "f"}}
-	fmt.Println(Index(nil, 3))
-	fmt.Println(Index([]int(nil), 3))
-	fmt.Println(Index(slice, 3))
-	fmt.Println(Index(slice, T{2, "c"}))
-	fmt.Println(Index(slice, T{2, "b"}))
+	var length = len(slice)
+	fmt.Println(Index(length, func(i int) bool { return slice[i] == T{2, "c"} }))
+	fmt.Println(Index(length, func(i int) bool { return slice[i] == T{2, "b"} }))
+	// Output:
+	// -1
+	// -1
+	// 2
+}
+
+func ExampleIndexGeneric() {
+	var slice = []T{{3, "c"}, {}, {2, "b"}, {9, "f"}}
+	fmt.Println(IndexGeneric(nil, 3))
+	fmt.Println(IndexGeneric([]int(nil), 3))
+	fmt.Println(IndexGeneric(slice, 3))
+	fmt.Println(IndexGeneric(slice, T{2, "c"}))
+	fmt.Println(IndexGeneric(slice, T{2, "b"}))
 	// Output:
 	// -1
 	// -1

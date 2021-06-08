@@ -4,9 +4,9 @@ import (
 	"reflect"
 )
 
-// Union returns union set of left and right, with right follows left.
+// UnionGeneric returns union set of left and right, with right follows left.
 // The duplicate members in left are kept.
-func Union(left, right interface{}) interface{} {
+func UnionGeneric(left, right interface{}) interface{} {
 	if left == nil && right == nil {
 		return nil
 	}

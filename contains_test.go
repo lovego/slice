@@ -6,12 +6,26 @@ import (
 )
 
 func ExampleContains() {
-	fmt.Println(Contains(nil, T{}))
+	fmt.Println(Contains(0, func(i int) bool { return true }))
 	var slice = []T{{3, "c"}, {}, {2, "b"}, {9, "f"}}
-	fmt.Println(Contains(slice, T{}))
-	fmt.Println(Contains(slice, T{2, "b"}))
-	fmt.Println(Contains(slice, T{2, "c"}))
-	fmt.Println(Contains(slice, 2))
+	var length = len(slice)
+	fmt.Println(Contains(length, func(i int) bool { return slice[i] == T{} }))
+	fmt.Println(Contains(length, func(i int) bool { return slice[i] == T{2, "b"} }))
+	fmt.Println(Contains(length, func(i int) bool { return slice[i] == T{2, "c"} }))
+	// Output:
+	// false
+	// true
+	// true
+	// false
+}
+
+func ExampleContainsGeneric() {
+	fmt.Println(ContainsGeneric(nil, T{}))
+	var slice = []T{{3, "c"}, {}, {2, "b"}, {9, "f"}}
+	fmt.Println(ContainsGeneric(slice, T{}))
+	fmt.Println(ContainsGeneric(slice, T{2, "b"}))
+	fmt.Println(ContainsGeneric(slice, T{2, "c"}))
+	fmt.Println(ContainsGeneric(slice, 2))
 	// Output:
 	// false
 	// true

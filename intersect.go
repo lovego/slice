@@ -2,9 +2,9 @@ package slice
 
 import "reflect"
 
-// Intersect returns intersection of left and right, in the left order.
+// IntersectGeneric returns intersection of left and right, in the left order.
 // The duplicate members in left are kept.
-func Intersect(left, right interface{}) interface{} {
+func IntersectGeneric(left, right interface{}) interface{} {
 	if left == nil || right == nil {
 		return nil
 	}

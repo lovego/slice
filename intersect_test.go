@@ -4,11 +4,11 @@ import (
 	"fmt"
 )
 
-func ExampleIntersect() {
+func ExampleIntersectGeneric() {
 	var left = []T{{3, "c"}, {}, {2, "b"}, {9, "f"}, {2, "b"}}
-	fmt.Println(Intersect(left, nil))
-	fmt.Printf("%#v\n", Intersect(left, []int64{}))
-	fmt.Println(Intersect(left, []T{{}, {2, "b"}}))
+	fmt.Println(IntersectGeneric(left, nil))
+	fmt.Printf("%#v\n", IntersectGeneric(left, []int64{}))
+	fmt.Println(IntersectGeneric(left, []T{{}, {2, "b"}}))
 	// Output:
 	// <nil>
 	// []slice.T(nil)

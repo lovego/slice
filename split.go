@@ -2,7 +2,7 @@ package slice
 
 import "reflect"
 
-func Split(slice, sep interface{}) interface{} {
+func SplitGeneric(slice, sep interface{}) interface{} {
 	return SplitValue(reflect.ValueOf(slice), sep).Interface()
 }
 

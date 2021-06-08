@@ -2,7 +2,16 @@ package slice
 
 import "reflect"
 
-func LastIndex(slice interface{}, target interface{}) int {
+func LastIndex(length int, fun func(int) bool) int {
+	for i := length - 1; i >= 0; i-- {
+		if fun(i) {
+			return i
+		}
+	}
+	return -1
+}
+
+func LastIndexGeneric(slice interface{}, target interface{}) int {
 	if slice == nil {
 		return -1
 	}

@@ -4,12 +4,12 @@ import (
 	"fmt"
 )
 
-func ExampleSubstract() {
-	fmt.Println(Substract(nil, []T{}))
-	fmt.Println(Substract([]T{}, nil))
+func ExampleSubstractGeneric() {
+	fmt.Println(SubstractGeneric(nil, []T{}))
+	fmt.Println(SubstractGeneric([]T{}, nil))
 	var left = []T{{3, "c"}, {}, {2, "b"}, {9, "f"}, {3, "c"}}
-	fmt.Println(Substract(left, nil))
-	fmt.Println(Substract(left, []T{{}, {2, "b"}, {2, "c"}}))
+	fmt.Println(SubstractGeneric(left, nil))
+	fmt.Println(SubstractGeneric(left, []T{{}, {2, "b"}, {2, "c"}}))
 
 	// Output:
 	// <nil>

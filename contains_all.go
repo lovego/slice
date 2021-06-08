@@ -2,7 +2,7 @@ package slice
 
 import "reflect"
 
-func ContainsAll(slice interface{}, targets ...interface{}) bool {
+func ContainsAllGeneric(slice interface{}, targets ...interface{}) bool {
 	if slice == nil {
 		return len(targets) == 0
 	}

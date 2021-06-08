@@ -2,7 +2,7 @@ package slice
 
 import "reflect"
 
-func Unique(slicePointer interface{}) {
+func UniqueGeneric(slicePointer interface{}) {
 	UniqueValue(reflect.ValueOf(slicePointer))
 }
 

@@ -6,10 +6,22 @@ import (
 )
 
 func ExampleLastIndex() {
-	fmt.Println(LastIndex(nil, T{}))
+	fmt.Println(LastIndex(0, func(i int) bool { return true }))
 	var slice = []T{{3, "c"}, {}, {2, "b"}, {}, {9, "f"}}
-	fmt.Println(LastIndex(slice, T{}))
-	fmt.Println(LastIndex(slice, T{2, "c"}))
+	var length = len(slice)
+	fmt.Println(LastIndex(length, func(i int) bool { return slice[i] == T{} }))
+	fmt.Println(LastIndex(length, func(i int) bool { return slice[i] == T{2, "c"} }))
+	// Output:
+	// -1
+	// 3
+	// -1
+}
+
+func ExampleLastIndexGeneric() {
+	fmt.Println(LastIndexGeneric(nil, T{}))
+	var slice = []T{{3, "c"}, {}, {2, "b"}, {}, {9, "f"}}
+	fmt.Println(LastIndexGeneric(slice, T{}))
+	fmt.Println(LastIndexGeneric(slice, T{2, "c"}))
 	// Output:
 	// -1
 	// 3

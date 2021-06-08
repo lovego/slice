@@ -2,7 +2,16 @@ package slice
 
 import "reflect"
 
-func Index(slice interface{}, target interface{}) int {
+func Index(length int, fun func(int) bool) int {
+	for i := 0; i < length; i++ {
+		if fun(i) {
+			return i
+		}
+	}
+	return -1
+}
+
+func IndexGeneric(slice interface{}, target interface{}) int {
 	if slice == nil {
 		return -1
 	}

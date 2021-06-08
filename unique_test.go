@@ -4,9 +4,9 @@ import (
 	"fmt"
 )
 
-func ExampleUnique() {
+func ExampleUniqueGeneric() {
 	slice := []T{{1, `a`}, {2, `b`}, {}, {3, `c`}, {2, `b`}, {3, `c`}}
-	Unique(&slice)
+	UniqueGeneric(&slice)
 	fmt.Println(slice)
 	// Output:
 	// [{1 a} {2 b} {0 } {3 c}]
