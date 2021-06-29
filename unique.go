@@ -2,10 +2,12 @@ package slice
 
 import "reflect"
 
-func UniqueGeneric(slicePointer interface{}) interface{} {
-	return UniqueValue(reflect.ValueOf(slicePointer)).Interface()
+// Input slice will be modified.
+func UniqueGeneric(slice interface{}) interface{} {
+	return UniqueValue(reflect.ValueOf(slice)).Interface()
 }
 
+// Input slice will be modified.
 func UniqueValue(slice reflect.Value) reflect.Value {
 	if slice.Kind() == reflect.Ptr {
 		slice = slice.Elem()
@@ -22,6 +24,7 @@ func UniqueValue(slice reflect.Value) reflect.Value {
 	return slice.Slice(0, j)
 }
 
+// Input slice will be modified.
 func UniqueInterface(slice []interface{}) []interface{} {
 	j := 0
 	for _, v := range slice {
@@ -33,6 +36,7 @@ func UniqueInterface(slice []interface{}) []interface{} {
 	return slice[:j]
 }
 
+// Input slice will be modified.
 func UniqueString(slice []string) []string {
 	j := 0
 	for _, v := range slice {
@@ -44,6 +48,7 @@ func UniqueString(slice []string) []string {
 	return slice[:j]
 }
 
+// Input slice will be modified.
 func UniqueInt(slice []int) []int {
 	j := 0
 	for _, v := range slice {
@@ -54,6 +59,8 @@ func UniqueInt(slice []int) []int {
 	}
 	return slice[:j]
 }
+
+// Input slice will be modified.
 func UniqueInt8(slice []int8) []int8 {
 	j := 0
 	for _, v := range slice {
@@ -64,6 +71,8 @@ func UniqueInt8(slice []int8) []int8 {
 	}
 	return slice[:j]
 }
+
+// Input slice will be modified.
 func UniqueInt16(slice []int16) []int16 {
 	j := 0
 	for _, v := range slice {
@@ -74,6 +83,8 @@ func UniqueInt16(slice []int16) []int16 {
 	}
 	return slice[:j]
 }
+
+// Input slice will be modified.
 func UniqueInt32(slice []int32) []int32 {
 	j := 0
 	for _, v := range slice {
@@ -84,6 +95,8 @@ func UniqueInt32(slice []int32) []int32 {
 	}
 	return slice[:j]
 }
+
+// Input slice will be modified.
 func UniqueInt64(slice []int64) []int64 {
 	j := 0
 	for _, v := range slice {
@@ -95,6 +108,7 @@ func UniqueInt64(slice []int64) []int64 {
 	return slice[:j]
 }
 
+// Input slice will be modified.
 func UniqueUint(slice []uint) []uint {
 	j := 0
 	for _, v := range slice {
@@ -105,6 +119,8 @@ func UniqueUint(slice []uint) []uint {
 	}
 	return slice[:j]
 }
+
+// Input slice will be modified.
 func UniqueUint8(slice []uint8) []uint8 {
 	j := 0
 	for _, v := range slice {
@@ -115,6 +131,8 @@ func UniqueUint8(slice []uint8) []uint8 {
 	}
 	return slice[:j]
 }
+
+// Input slice will be modified.
 func UniqueUint16(slice []uint16) []uint16 {
 	j := 0
 	for _, v := range slice {
@@ -125,6 +143,8 @@ func UniqueUint16(slice []uint16) []uint16 {
 	}
 	return slice[:j]
 }
+
+// Input slice will be modified.
 func UniqueUint32(slice []uint32) []uint32 {
 	j := 0
 	for _, v := range slice {
@@ -135,6 +155,8 @@ func UniqueUint32(slice []uint32) []uint32 {
 	}
 	return slice[:j]
 }
+
+// Input slice will be modified.
 func UniqueUint64(slice []uint64) []uint64 {
 	j := 0
 	for _, v := range slice {

@@ -3,17 +3,16 @@ package slice
 import "reflect"
 
 // UniqueBy will change the original slice, Use copy to keep the original slice.
-// Param slice should be a pointer to a slice.
+// The input slice will be modified.
 // If param keepLast is true, the last one of the same elements is kept,  otherwise the first one is kept.
-func UniqueBy(slice interface{}, keyFunc func(i int) interface{}, keepLast bool) {
-	UniqueByValue(reflect.ValueOf(slice), keyFunc, keepLast)
+func UniqueBy(slice interface{}, keyFunc func(i int) interface{}, keepLast bool) interface{} {
+	return UniqueByValue(reflect.ValueOf(slice), keyFunc, keepLast).Interface()
 }
 
 // UniqueByValue will change the original slice, Use copy to keep the original slice.
-// Param slice should be a pointer to a slice.
+// The input slice will be modified.
 // If param keepLast is true, the last one of the same elements is kept,  otherwise the first one is kept.
-func UniqueByValue(slice reflect.Value, keyFunc func(i int) interface{}, keepLast bool) {
-	slice = slice.Elem()
+func UniqueByValue(slice reflect.Value, keyFunc func(i int) interface{}, keepLast bool) reflect.Value {
 	length := slice.Len()
 	if keepLast {
 		j := length
@@ -24,7 +23,7 @@ func UniqueByValue(slice reflect.Value, keyFunc func(i int) interface{}, keepLas
 				slice.Index(j).Set(slice.Index(i))
 			}
 		}
-		slice.Set(slice.Slice(j, length))
+		return slice.Slice(j, length)
 	} else {
 		j := 0
 		for i := 0; i < length; i++ {
@@ -34,7 +33,7 @@ func UniqueByValue(slice reflect.Value, keyFunc func(i int) interface{}, keepLas
 				j++
 			}
 		}
-		slice.Set(slice.Slice(0, j))
+		return slice.Slice(0, j)
 	}
 }
 

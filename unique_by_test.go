@@ -6,12 +6,10 @@ import (
 
 func ExampleUniqueBy() {
 	slice := []T{}
-	UniqueBy(&slice, func(i int) interface{} { return slice[i].Id }, false)
-	fmt.Println(slice)
+	fmt.Println(UniqueBy(slice, func(i int) interface{} { return slice[i].Id }, false))
 
 	slice = []T{{1, `a`}, {1, `b`}, {2, `a`}, {2, `b`}}
-	UniqueBy(&slice, func(i int) interface{} { return slice[i].Id }, false)
-	fmt.Println(slice)
+	fmt.Println(UniqueBy(slice, func(i int) interface{} { return slice[i].Id }, false))
 	// Output:
 	// []
 	// [{1 a} {2 a}]
@@ -19,12 +17,10 @@ func ExampleUniqueBy() {
 
 func ExampleUniqueBy_keepLast() {
 	slice := []T{}
-	UniqueBy(&slice, func(i int) interface{} { return slice[i].Id }, true)
-	fmt.Println(slice)
+	fmt.Println(UniqueBy(slice, func(i int) interface{} { return slice[i].Id }, true))
 
 	slice = []T{{1, `a`}, {1, `b`}, {2, `a`}, {2, `b`}}
-	UniqueBy(&slice, func(i int) interface{} { return slice[i].Id }, true)
-	fmt.Println(slice)
+	fmt.Println(UniqueBy(slice, func(i int) interface{} { return slice[i].Id }, true))
 	// Output:
 	// []
 	// [{1 b} {2 b}]

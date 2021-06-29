@@ -2,9 +2,10 @@ package slice
 
 import "reflect"
 
-// MoveBackward move elements starting at i backward n steps. It panics if i > len(s)
-func MoveBackward(s interface{}, i, n int) interface{} {
-	v := reflect.ValueOf(s)
+// MoveBackward move elements starting at i backward n steps. It panics if i > len(slice)
+// The input slice will be modified.
+func MoveBackward(slice interface{}, i, n int) interface{} {
+	v := reflect.ValueOf(slice)
 	l := v.Len() + n
 	c := v.Cap()
 	if l <= c {
