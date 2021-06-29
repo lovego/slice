@@ -2,11 +2,11 @@ package slice
 
 import "reflect"
 
-func UniqueGeneric(slicePointer interface{}) {
-	UniqueValue(reflect.ValueOf(slicePointer))
+func UniqueGeneric(slicePointer interface{}) interface{} {
+	return UniqueValue(reflect.ValueOf(slicePointer)).Interface()
 }
 
-func UniqueValue(slice reflect.Value) {
+func UniqueValue(slice reflect.Value) reflect.Value {
 	if slice.Kind() == reflect.Ptr {
 		slice = slice.Elem()
 	}
@@ -19,129 +19,129 @@ func UniqueValue(slice reflect.Value) {
 			j++
 		}
 	}
-	slice.Set(slice.Slice(0, j))
+	return slice.Slice(0, j)
 }
 
-func UniqueInterface(slice *[]interface{}) {
+func UniqueInterface(slice []interface{}) []interface{} {
 	j := 0
-	for _, v := range *slice {
-		if !ContainsInterface((*slice)[0:j], v) {
-			(*slice)[j] = v
+	for _, v := range slice {
+		if !ContainsInterface(slice[0:j], v) {
+			slice[j] = v
 			j++
 		}
 	}
-	*slice = (*slice)[:j]
+	return slice[:j]
 }
 
-func UniqueString(slice *[]string) {
+func UniqueString(slice []string) []string {
 	j := 0
-	for _, v := range *slice {
-		if !ContainsString((*slice)[0:j], v) {
-			(*slice)[j] = v
+	for _, v := range slice {
+		if !ContainsString(slice[0:j], v) {
+			slice[j] = v
 			j++
 		}
 	}
-	*slice = (*slice)[:j]
+	return slice[:j]
 }
 
-func UniqueInt(slice *[]int) {
+func UniqueInt(slice []int) []int {
 	j := 0
-	for _, v := range *slice {
-		if !ContainsInt((*slice)[0:j], v) {
-			(*slice)[j] = v
+	for _, v := range slice {
+		if !ContainsInt(slice[0:j], v) {
+			slice[j] = v
 			j++
 		}
 	}
-	*slice = (*slice)[:j]
+	return slice[:j]
 }
-func UniqueInt8(slice *[]int8) {
+func UniqueInt8(slice []int8) []int8 {
 	j := 0
-	for _, v := range *slice {
-		if !ContainsInt8((*slice)[0:j], v) {
-			(*slice)[j] = v
+	for _, v := range slice {
+		if !ContainsInt8(slice[0:j], v) {
+			slice[j] = v
 			j++
 		}
 	}
-	*slice = (*slice)[:j]
+	return slice[:j]
 }
-func UniqueInt16(slice *[]int16) {
+func UniqueInt16(slice []int16) []int16 {
 	j := 0
-	for _, v := range *slice {
-		if !ContainsInt16((*slice)[0:j], v) {
-			(*slice)[j] = v
+	for _, v := range slice {
+		if !ContainsInt16(slice[0:j], v) {
+			slice[j] = v
 			j++
 		}
 	}
-	*slice = (*slice)[:j]
+	return slice[:j]
 }
-func UniqueInt32(slice *[]int32) {
+func UniqueInt32(slice []int32) []int32 {
 	j := 0
-	for _, v := range *slice {
-		if !ContainsInt32((*slice)[0:j], v) {
-			(*slice)[j] = v
+	for _, v := range slice {
+		if !ContainsInt32(slice[0:j], v) {
+			slice[j] = v
 			j++
 		}
 	}
-	*slice = (*slice)[:j]
+	return slice[:j]
 }
-func UniqueInt64(slice *[]int64) {
+func UniqueInt64(slice []int64) []int64 {
 	j := 0
-	for _, v := range *slice {
-		if !ContainsInt64((*slice)[0:j], v) {
-			(*slice)[j] = v
+	for _, v := range slice {
+		if !ContainsInt64(slice[0:j], v) {
+			slice[j] = v
 			j++
 		}
 	}
-	*slice = (*slice)[:j]
+	return slice[:j]
 }
 
-func UniqueUint(slice *[]uint) {
+func UniqueUint(slice []uint) []uint {
 	j := 0
-	for _, v := range *slice {
-		if !ContainsUint((*slice)[0:j], v) {
-			(*slice)[j] = v
+	for _, v := range slice {
+		if !ContainsUint(slice[0:j], v) {
+			slice[j] = v
 			j++
 		}
 	}
-	*slice = (*slice)[:j]
+	return slice[:j]
 }
-func UniqueUint8(slice *[]uint8) {
+func UniqueUint8(slice []uint8) []uint8 {
 	j := 0
-	for _, v := range *slice {
-		if !ContainsUint8((*slice)[0:j], v) {
-			(*slice)[j] = v
+	for _, v := range slice {
+		if !ContainsUint8(slice[0:j], v) {
+			slice[j] = v
 			j++
 		}
 	}
-	*slice = (*slice)[:j]
+	return slice[:j]
 }
-func UniqueUint16(slice *[]uint16) {
+func UniqueUint16(slice []uint16) []uint16 {
 	j := 0
-	for _, v := range *slice {
-		if !ContainsUint16((*slice)[0:j], v) {
-			(*slice)[j] = v
+	for _, v := range slice {
+		if !ContainsUint16(slice[0:j], v) {
+			slice[j] = v
 			j++
 		}
 	}
-	*slice = (*slice)[:j]
+	return slice[:j]
 }
-func UniqueUint32(slice *[]uint32) {
+func UniqueUint32(slice []uint32) []uint32 {
 	j := 0
-	for _, v := range *slice {
-		if !ContainsUint32((*slice)[0:j], v) {
-			(*slice)[j] = v
+	for _, v := range slice {
+		if !ContainsUint32(slice[0:j], v) {
+			slice[j] = v
 			j++
 		}
 	}
-	*slice = (*slice)[:j]
+	return slice[:j]
 }
-func UniqueUint64(slice *[]uint64) {
+func UniqueUint64(slice []uint64) []uint64 {
 	j := 0
-	for _, v := range *slice {
-		if !ContainsUint64((*slice)[0:j], v) {
-			(*slice)[j] = v
+	for _, v := range slice {
+		if !ContainsUint64(slice[0:j], v) {
+			slice[j] = v
 			j++
 		}
 	}
-	*slice = (*slice)[:j]
+	return slice[:j]
 }

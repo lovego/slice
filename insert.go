@@ -3,135 +3,136 @@ package slice
 import "reflect"
 
 // Insert insert value at index i, it panics if i > len(slice).
-func InsertGeneric(slicePointer interface{}, i int, value interface{}) {
-	InsertValue(reflect.ValueOf(slicePointer).Elem(), i, reflect.ValueOf(value))
+func InsertGeneric(slice interface{}, i int, value interface{}) interface{} {
+	return InsertValue(reflect.ValueOf(slice), i, reflect.ValueOf(value))
 }
 
-// InsertValue insert value at index i, it panics if i > len(slice). slice must be settable.
-func InsertValue(slice reflect.Value, i int, value reflect.Value) {
-	slice.Set(reflect.Append(slice, value))
+// InsertValue insert value at index i, it panics if i > len(slice).
+func InsertValue(slice reflect.Value, i int, value reflect.Value) reflect.Value {
+	slice = reflect.Append(slice, value)
 	if i != slice.Len()-1 {
 		reflect.Copy(slice.Slice(i+1, slice.Len()), slice.Slice(i, slice.Len()-1))
 		slice.Index(i).Set(value)
 	}
+	return slice
 }
 
 // InsertInterface insert value at index i, it panics if i > len(slice).
-func InsertInterface(slicePointer *[]interface{}, i int, value interface{}) {
-	slice := append(*slicePointer, value)
+func InsertInterface(slice []interface{}, i int, value interface{}) []interface{} {
+	slice = append(slice, value)
 	if i != len(slice)-1 {
 		copy(slice[i+1:], slice[i:len(slice)-1])
 		slice[i] = value
 	}
-	*slicePointer = slice
+	return slice
 }
 
 // InsertString insert value at index i, it panics if i > len(slice).
-func InsertString(slicePointer *[]string, i int, value string) {
-	slice := append(*slicePointer, value)
+func InsertString(slice []string, i int, value string) []string {
+	slice = append(slice, value)
 	if i != len(slice)-1 {
 		copy(slice[i+1:], slice[i:len(slice)-1])
 		slice[i] = value
 	}
-	*slicePointer = slice
+	return slice
 }
 
 // InsertInt insert value at index i, it panics if i > len(slice).
-func InsertInt(slicePointer *[]int, i int, value int) {
-	slice := append(*slicePointer, value)
+func InsertInt(slice []int, i int, value int) []int {
+	slice = append(slice, value)
 	if i != len(slice)-1 {
 		copy(slice[i+1:], slice[i:len(slice)-1])
 		slice[i] = value
 	}
-	*slicePointer = slice
+	return slice
 }
 
 // InsertInt8 insert value at index i, it panics if i > len(slice).
-func InsertInt8(slicePointer *[]int8, i int, value int8) {
-	slice := append(*slicePointer, value)
+func InsertInt8(slice []int8, i int, value int8) []int8 {
+	slice = append(slice, value)
 	if i != len(slice)-1 {
 		copy(slice[i+1:], slice[i:len(slice)-1])
 		slice[i] = value
 	}
-	*slicePointer = slice
+	return slice
 }
 
 // InsertInt16 insert value at index i, it panics if i > len(slice).
-func InsertInt16(slicePointer *[]int16, i int, value int16) {
-	slice := append(*slicePointer, value)
+func InsertInt16(slice []int16, i int, value int16) []int16 {
+	slice = append(slice, value)
 	if i != len(slice)-1 {
 		copy(slice[i+1:], slice[i:len(slice)-1])
 		slice[i] = value
 	}
-	*slicePointer = slice
+	return slice
 }
 
 // InsertInt32 insert value at index i, it panics if i > len(slice).
-func InsertInt32(slicePointer *[]int32, i int, value int32) {
-	slice := append(*slicePointer, value)
+func InsertInt32(slice []int32, i int, value int32) []int32 {
+	slice = append(slice, value)
 	if i != len(slice)-1 {
 		copy(slice[i+1:], slice[i:len(slice)-1])
 		slice[i] = value
 	}
-	*slicePointer = slice
+	return slice
 }
 
 // InsertInt64 insert value at index i, it panics if i > len(slice).
-func InsertInt64(slicePointer *[]int64, i int, value int64) {
-	slice := append(*slicePointer, value)
+func InsertInt64(slice []int64, i int, value int64) []int64 {
+	slice = append(slice, value)
 	if i != len(slice)-1 {
 		copy(slice[i+1:], slice[i:len(slice)-1])
 		slice[i] = value
 	}
-	*slicePointer = slice
+	return slice
 }
 
 // InsertUint insert value at index i, it panics if i > len(slice).
-func InsertUint(slicePointer *[]uint, i int, value uint) {
-	slice := append(*slicePointer, value)
+func InsertUint(slice []uint, i int, value uint) []uint {
+	slice = append(slice, value)
 	if i != len(slice)-1 {
 		copy(slice[i+1:], slice[i:len(slice)-1])
 		slice[i] = value
 	}
-	*slicePointer = slice
+	return slice
 }
 
 // InsertUint8 insert value at index i, it panics if i > len(slice).
-func InsertUint8(slicePointer *[]uint8, i int, value uint8) {
-	slice := append(*slicePointer, value)
+func InsertUint8(slice []uint8, i int, value uint8) []uint8 {
+	slice = append(slice, value)
 	if i != len(slice)-1 {
 		copy(slice[i+1:], slice[i:len(slice)-1])
 		slice[i] = value
 	}
-	*slicePointer = slice
+	return slice
 }
 
 // InsertUint16 insert value at index i, it panics if i > len(slice).
-func InsertUint16(slicePointer *[]uint16, i int, value uint16) {
-	slice := append(*slicePointer, value)
+func InsertUint16(slice []uint16, i int, value uint16) []uint16 {
+	slice = append(slice, value)
 	if i != len(slice)-1 {
 		copy(slice[i+1:], slice[i:len(slice)-1])
 		slice[i] = value
 	}
-	*slicePointer = slice
+	return slice
 }
 
 // InsertUint32 insert value at index i, it panics if i > len(slice).
-func InsertUint32(slicePointer *[]uint32, i int, value uint32) {
-	slice := append(*slicePointer, value)
+func InsertUint32(slice []uint32, i int, value uint32) []uint32 {
+	slice = append(slice, value)
 	if i != len(slice)-1 {
 		copy(slice[i+1:], slice[i:len(slice)-1])
 		slice[i] = value
 	}
-	*slicePointer = slice
+	return slice
 }
 
 // InsertUint64 insert value at index i, it panics if i > len(slice).
-func InsertUint64(slicePointer *[]uint64, i int, value uint64) {
-	slice := append(*slicePointer, value)
+func InsertUint64(slice []uint64, i int, value uint64) []uint64 {
+	slice = append(slice, value)
 	if i != len(slice)-1 {
 		copy(slice[i+1:], slice[i:len(slice)-1])
 		slice[i] = value
 	}
-	*slicePointer = slice
+	return slice
 }
