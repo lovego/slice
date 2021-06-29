@@ -7,7 +7,7 @@ func InsertGeneric(slicePointer interface{}, i int, value interface{}) {
 	InsertValue(reflect.ValueOf(slicePointer).Elem(), i, reflect.ValueOf(value))
 }
 
-// InsertValue insert value at index i, it panics if i > len(slice).
+// InsertValue insert value at index i, it panics if i > len(slice). slice must be settable.
 func InsertValue(slice reflect.Value, i int, value reflect.Value) {
 	slice.Set(reflect.Append(slice, value))
 	if i != slice.Len()-1 {
