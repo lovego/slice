@@ -5,11 +5,25 @@ import (
 )
 
 func ExampleInsertGeneric() {
-	fmt.Println(InsertGeneric([]string(nil), 0, "a"))
-	fmt.Println(InsertGeneric([]string{}, 0, "a"))
-	fmt.Println(InsertGeneric([]string{"b", "c"}, 0, "a"))
-	fmt.Println(InsertGeneric([]string{"b", "c"}, 1, "a"))
-	fmt.Println(InsertGeneric([]string{"b", "c"}, 2, "a"))
+	s := []string(nil)
+	InsertGeneric(&s, 0, "a")
+	fmt.Println(s)
+
+	s = []string{}
+	InsertGeneric(&s, 0, "a")
+	fmt.Println(s)
+
+	s = []string{"b", "c"}
+	InsertGeneric(&s, 0, "a")
+	fmt.Println(s)
+
+	s = []string{"b", "c"}
+	InsertGeneric(&s, 1, "a")
+	fmt.Println(s)
+
+	s = []string{"b", "c"}
+	InsertGeneric(&s, 2, "a")
+	fmt.Println(s)
 	// Output:
 	// [a]
 	// [a]
@@ -19,11 +33,25 @@ func ExampleInsertGeneric() {
 }
 
 func ExampleInsertInterface() {
-	fmt.Println(InsertInterface(nil, 0, "a"))
-	fmt.Println(InsertInterface([]interface{}{}, 0, "a"))
-	fmt.Println(InsertInterface([]interface{}{"b", 1}, 0, "a"))
-	fmt.Println(InsertInterface([]interface{}{"b", 1}, 1, "a"))
-	fmt.Println(InsertInterface([]interface{}{"b", 1}, 2, "a"))
+	var s []interface{}
+	InsertInterface(&s, 0, "a")
+	fmt.Println(s)
+
+	s = []interface{}{}
+	InsertInterface(&s, 0, "a")
+	fmt.Println(s)
+
+	s = []interface{}{"b", 1}
+	InsertInterface(&s, 0, "a")
+	fmt.Println(s)
+
+	s = []interface{}{"b", 1}
+	InsertInterface(&s, 1, "a")
+	fmt.Println(s)
+
+	s = []interface{}{"b", 1}
+	InsertInterface(&s, 2, "a")
+	fmt.Println(s)
 	// Output:
 	// [a]
 	// [a]
@@ -33,11 +61,26 @@ func ExampleInsertInterface() {
 }
 
 func ExampleInsertString() {
-	fmt.Println(InsertString(nil, 0, "a"))
-	fmt.Println(InsertString([]string{}, 0, "a"))
-	fmt.Println(InsertString([]string{"b", "c"}, 0, "a"))
-	fmt.Println(InsertString([]string{"b", "c"}, 1, "a"))
-	fmt.Println(InsertString([]string{"b", "c"}, 2, "a"))
+	var s []string
+	InsertString(&s, 0, "a")
+	fmt.Println(s)
+
+	s = []string{}
+	InsertString(&s, 0, "a")
+	fmt.Println(s)
+
+	s = []string{"b", "c"}
+	InsertString(&s, 0, "a")
+	fmt.Println(s)
+
+	s = []string{"b", "c"}
+	InsertString(&s, 1, "a")
+	fmt.Println(s)
+
+	s = []string{"b", "c"}
+	InsertString(&s, 2, "a")
+	fmt.Println(s)
+
 	// Output:
 	// [a]
 	// [a]
@@ -47,11 +90,26 @@ func ExampleInsertString() {
 }
 
 func ExampleInsertInt() {
-	fmt.Println(InsertInt(nil, 0, 3))
-	fmt.Println(InsertInt([]int{}, 0, 3))
-	fmt.Println(InsertInt([]int{2, 3}, 0, 1))
-	fmt.Println(InsertInt([]int{2, 3}, 1, 1))
-	fmt.Println(InsertInt([]int{2, 3}, 2, 1))
+	var s []int
+	InsertInt(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []int{}
+	InsertInt(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []int{2, 3}
+	InsertInt(&s, 0, 1)
+	fmt.Println(s)
+
+	s = []int{2, 3}
+	InsertInt(&s, 1, 1)
+	fmt.Println(s)
+
+	s = []int{2, 3}
+	InsertInt(&s, 2, 1)
+	fmt.Println(s)
+
 	// Output:
 	// [3]
 	// [3]
@@ -59,12 +117,28 @@ func ExampleInsertInt() {
 	// [2 1 3]
 	// [2 3 1]
 }
+
 func ExampleInsertInt8() {
-	fmt.Println(InsertInt8(nil, 0, 3))
-	fmt.Println(InsertInt8([]int8{}, 0, 3))
-	fmt.Println(InsertInt8([]int8{2, 3}, 0, 1))
-	fmt.Println(InsertInt8([]int8{2, 3}, 1, 1))
-	fmt.Println(InsertInt8([]int8{2, 3}, 2, 1))
+	var s []int8
+	InsertInt8(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []int8{}
+	InsertInt8(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []int8{2, 3}
+	InsertInt8(&s, 0, 1)
+	fmt.Println(s)
+
+	s = []int8{2, 3}
+	InsertInt8(&s, 1, 1)
+	fmt.Println(s)
+
+	s = []int8{2, 3}
+	InsertInt8(&s, 2, 1)
+	fmt.Println(s)
+
 	// Output:
 	// [3]
 	// [3]
@@ -73,11 +147,26 @@ func ExampleInsertInt8() {
 	// [2 3 1]
 }
 func ExampleInsertInt16() {
-	fmt.Println(InsertInt16(nil, 0, 3))
-	fmt.Println(InsertInt16([]int16{}, 0, 3))
-	fmt.Println(InsertInt16([]int16{2, 3}, 0, 1))
-	fmt.Println(InsertInt16([]int16{2, 3}, 1, 1))
-	fmt.Println(InsertInt16([]int16{2, 3}, 2, 1))
+	var s []int16
+	InsertInt16(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []int16{}
+	InsertInt16(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []int16{2, 3}
+	InsertInt16(&s, 0, 1)
+	fmt.Println(s)
+
+	s = []int16{2, 3}
+	InsertInt16(&s, 1, 1)
+	fmt.Println(s)
+
+	s = []int16{2, 3}
+	InsertInt16(&s, 2, 1)
+	fmt.Println(s)
+
 	// Output:
 	// [3]
 	// [3]
@@ -86,11 +175,26 @@ func ExampleInsertInt16() {
 	// [2 3 1]
 }
 func ExampleInsertInt32() {
-	fmt.Println(InsertInt32(nil, 0, 3))
-	fmt.Println(InsertInt32([]int32{}, 0, 3))
-	fmt.Println(InsertInt32([]int32{2, 3}, 0, 1))
-	fmt.Println(InsertInt32([]int32{2, 3}, 1, 1))
-	fmt.Println(InsertInt32([]int32{2, 3}, 2, 1))
+	var s []int32
+	InsertInt32(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []int32{}
+	InsertInt32(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []int32{2, 3}
+	InsertInt32(&s, 0, 1)
+	fmt.Println(s)
+
+	s = []int32{2, 3}
+	InsertInt32(&s, 1, 1)
+	fmt.Println(s)
+
+	s = []int32{2, 3}
+	InsertInt32(&s, 2, 1)
+	fmt.Println(s)
+
 	// Output:
 	// [3]
 	// [3]
@@ -99,11 +203,26 @@ func ExampleInsertInt32() {
 	// [2 3 1]
 }
 func ExampleInsertInt64() {
-	fmt.Println(InsertInt64(nil, 0, 3))
-	fmt.Println(InsertInt64([]int64{}, 0, 3))
-	fmt.Println(InsertInt64([]int64{2, 3}, 0, 1))
-	fmt.Println(InsertInt64([]int64{2, 3}, 1, 1))
-	fmt.Println(InsertInt64([]int64{2, 3}, 2, 1))
+	var s []int64
+	InsertInt64(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []int64{}
+	InsertInt64(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []int64{2, 3}
+	InsertInt64(&s, 0, 1)
+	fmt.Println(s)
+
+	s = []int64{2, 3}
+	InsertInt64(&s, 1, 1)
+	fmt.Println(s)
+
+	s = []int64{2, 3}
+	InsertInt64(&s, 2, 1)
+	fmt.Println(s)
+
 	// Output:
 	// [3]
 	// [3]
@@ -113,11 +232,26 @@ func ExampleInsertInt64() {
 }
 
 func ExampleInsertUint() {
-	fmt.Println(InsertUint(nil, 0, 3))
-	fmt.Println(InsertUint([]uint{}, 0, 3))
-	fmt.Println(InsertUint([]uint{2, 3}, 0, 1))
-	fmt.Println(InsertUint([]uint{2, 3}, 1, 1))
-	fmt.Println(InsertUint([]uint{2, 3}, 2, 1))
+	var s []uint
+	InsertUint(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []uint{}
+	InsertUint(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []uint{2, 3}
+	InsertUint(&s, 0, 1)
+	fmt.Println(s)
+
+	s = []uint{2, 3}
+	InsertUint(&s, 1, 1)
+	fmt.Println(s)
+
+	s = []uint{2, 3}
+	InsertUint(&s, 2, 1)
+	fmt.Println(s)
+
 	// Output:
 	// [3]
 	// [3]
@@ -126,11 +260,26 @@ func ExampleInsertUint() {
 	// [2 3 1]
 }
 func ExampleInsertUint8() {
-	fmt.Println(InsertUint8(nil, 0, 3))
-	fmt.Println(InsertUint8([]uint8{}, 0, 3))
-	fmt.Println(InsertUint8([]uint8{2, 3}, 0, 1))
-	fmt.Println(InsertUint8([]uint8{2, 3}, 1, 1))
-	fmt.Println(InsertUint8([]uint8{2, 3}, 2, 1))
+	var s []uint8
+	InsertUint8(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []uint8{}
+	InsertUint8(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []uint8{2, 3}
+	InsertUint8(&s, 0, 1)
+	fmt.Println(s)
+
+	s = []uint8{2, 3}
+	InsertUint8(&s, 1, 1)
+	fmt.Println(s)
+
+	s = []uint8{2, 3}
+	InsertUint8(&s, 2, 1)
+	fmt.Println(s)
+
 	// Output:
 	// [3]
 	// [3]
@@ -139,11 +288,26 @@ func ExampleInsertUint8() {
 	// [2 3 1]
 }
 func ExampleInsertUint16() {
-	fmt.Println(InsertUint16(nil, 0, 3))
-	fmt.Println(InsertUint16([]uint16{}, 0, 3))
-	fmt.Println(InsertUint16([]uint16{2, 3}, 0, 1))
-	fmt.Println(InsertUint16([]uint16{2, 3}, 1, 1))
-	fmt.Println(InsertUint16([]uint16{2, 3}, 2, 1))
+	var s []uint16
+	InsertUint16(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []uint16{}
+	InsertUint16(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []uint16{2, 3}
+	InsertUint16(&s, 0, 1)
+	fmt.Println(s)
+
+	s = []uint16{2, 3}
+	InsertUint16(&s, 1, 1)
+	fmt.Println(s)
+
+	s = []uint16{2, 3}
+	InsertUint16(&s, 2, 1)
+	fmt.Println(s)
+
 	// Output:
 	// [3]
 	// [3]
@@ -152,11 +316,26 @@ func ExampleInsertUint16() {
 	// [2 3 1]
 }
 func ExampleInsertUint32() {
-	fmt.Println(InsertUint32(nil, 0, 3))
-	fmt.Println(InsertUint32([]uint32{}, 0, 3))
-	fmt.Println(InsertUint32([]uint32{2, 3}, 0, 1))
-	fmt.Println(InsertUint32([]uint32{2, 3}, 1, 1))
-	fmt.Println(InsertUint32([]uint32{2, 3}, 2, 1))
+	var s []uint32
+	InsertUint32(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []uint32{}
+	InsertUint32(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []uint32{2, 3}
+	InsertUint32(&s, 0, 1)
+	fmt.Println(s)
+
+	s = []uint32{2, 3}
+	InsertUint32(&s, 1, 1)
+	fmt.Println(s)
+
+	s = []uint32{2, 3}
+	InsertUint32(&s, 2, 1)
+	fmt.Println(s)
+
 	// Output:
 	// [3]
 	// [3]
@@ -165,11 +344,26 @@ func ExampleInsertUint32() {
 	// [2 3 1]
 }
 func ExampleInsertUint64() {
-	fmt.Println(InsertUint64(nil, 0, 3))
-	fmt.Println(InsertUint64([]uint64{}, 0, 3))
-	fmt.Println(InsertUint64([]uint64{2, 3}, 0, 1))
-	fmt.Println(InsertUint64([]uint64{2, 3}, 1, 1))
-	fmt.Println(InsertUint64([]uint64{2, 3}, 2, 1))
+	var s []uint64
+	InsertUint64(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []uint64{}
+	InsertUint64(&s, 0, 3)
+	fmt.Println(s)
+
+	s = []uint64{2, 3}
+	InsertUint64(&s, 0, 1)
+	fmt.Println(s)
+
+	s = []uint64{2, 3}
+	InsertUint64(&s, 1, 1)
+	fmt.Println(s)
+
+	s = []uint64{2, 3}
+	InsertUint64(&s, 2, 1)
+	fmt.Println(s)
+
 	// Output:
 	// [3]
 	// [3]
