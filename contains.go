@@ -22,6 +22,10 @@ func ContainsString(slice []string, target string) bool {
 	return IndexString(slice, target) >= 0
 }
 
+func ContainsBool(slice []bool, target bool) bool {
+	return IndexBool(slice, target) >= 0
+}
+
 func ContainsInt(slice []int, target int) bool {
 	return IndexInt(slice, target) >= 0
 }

@@ -46,6 +46,15 @@ func IndexString(slice []string, target string) int {
 	return -1
 }
 
+func IndexBool(slice []bool, target bool) int {
+	for i := 0; i < len(slice); i++ {
+		if slice[i] == target {
+			return i
+		}
+	}
+	return -1
+}
+
 func IndexInt(slice []int, target int) int {
 	for i := 0; i < len(slice); i++ {
 		if slice[i] == target {
