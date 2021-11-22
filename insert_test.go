@@ -2,6 +2,7 @@ package slice
 
 import (
 	"fmt"
+	"reflect"
 )
 
 func ExampleInsertGeneric() {
@@ -10,6 +11,20 @@ func ExampleInsertGeneric() {
 	fmt.Println(InsertGeneric([]string{"b", "c"}, 0, "a"))
 	fmt.Println(InsertGeneric([]string{"b", "c"}, 1, "a"))
 	fmt.Println(InsertGeneric([]string{"b", "c"}, 2, "a"))
+	// Output:
+	// [a]
+	// [a]
+	// [a b c]
+	// [b a c]
+	// [b c a]
+}
+
+func ExampleInsertValue() {
+	fmt.Println(InsertValue(reflect.ValueOf([]string(nil)), 0, reflect.ValueOf("a")))
+	fmt.Println(InsertValue(reflect.ValueOf([]string{}), 0, reflect.ValueOf("a")))
+	fmt.Println(InsertValue(reflect.ValueOf([]string{"b", "c"}), 0, reflect.ValueOf("a")))
+	fmt.Println(InsertValue(reflect.ValueOf([]string{"b", "c"}), 1, reflect.ValueOf("a")))
+	fmt.Println(InsertValue(reflect.ValueOf([]string{"b", "c"}), 2, reflect.ValueOf("a")))
 	// Output:
 	// [a]
 	// [a]
@@ -44,6 +59,20 @@ func ExampleInsertString() {
 	// [a b c]
 	// [b a c]
 	// [b c a]
+}
+
+func ExampleInsertBool() {
+	fmt.Println(InsertBool(nil, 0, true))
+	fmt.Println(InsertBool([]bool{}, 0, true))
+	fmt.Println(InsertBool([]bool{false, true}, 0, true))
+	fmt.Println(InsertBool([]bool{false, true}, 1, true))
+	fmt.Println(InsertBool([]bool{false, true}, 2, true))
+	// Output:
+	// [true]
+	// [true]
+	// [true false true]
+	// [false true true]
+	// [false true true]
 }
 
 func ExampleInsertInt() {

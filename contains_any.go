@@ -45,6 +45,18 @@ func ContainsAnyString(slice []string, targets ...string) bool {
 	return false
 }
 
+func ContainsAnyBool(slice []bool, targets ...bool) bool {
+	if len(slice) == 0 {
+		return false
+	}
+	for _, target := range targets {
+		if ContainsBool(slice, target) {
+			return true
+		}
+	}
+	return false
+}
+
 func ContainsAnyInt(slice []int, targets ...int) bool {
 	if len(slice) == 0 {
 		return false

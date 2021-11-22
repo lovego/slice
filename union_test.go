@@ -39,6 +39,14 @@ func ExampleUnionString() {
 	// [1 2 2 3 4]
 }
 
+func ExampleUnionBool() {
+	fmt.Println(UnionBool([]bool{true, false, true}, []bool{}))
+	fmt.Println(UnionBool([]bool{true, true}, []bool{false}))
+	// Output:
+	// [true false true]
+	// [true true false]
+}
+
 func ExampleUnionInt() {
 	fmt.Println(UnionInt([]int{1, 2, 2, 3}, []int{3, 4, 3, 4}))
 	// Output:

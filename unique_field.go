@@ -36,6 +36,23 @@ func UniqueFieldString(slice interface{}, fieldPaths ...string) (result []string
 	return
 }
 
+// UniqueFieldBool returns unique values of field from a struct slice
+func UniqueFieldBool(slice interface{}, fieldPaths ...string) (result []bool) {
+	sliceValue := reflect.ValueOf(slice)
+	length := sliceValue.Len()
+	for i := 0; i < length; i++ {
+		value := sliceValue.Index(i)
+		for _, field := range fieldPaths {
+			value = value.FieldByName(field)
+		}
+		v := value.Bool()
+		if !ContainsBool(result, v) {
+			result = append(result, v)
+		}
+	}
+	return
+}
+
 // UniqueFieldInt returns unique values of field from a struct slice
 func UniqueFieldInt(slice interface{}, fieldPaths ...string) (result []int) {
 	sliceValue := reflect.ValueOf(slice)

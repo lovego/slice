@@ -10,14 +10,6 @@ func ExampleContainsAllGeneric() {
 	fmt.Println(ContainsAllGeneric(nil, T{}))
 	fmt.Println(ContainsAllGeneric([]bool{}))
 	fmt.Println(ContainsAllGeneric([]bool{}, "xx"))
-	// Output:
-	// true
-	// false
-	// true
-	// false
-}
-
-func ExampleContainsAllGeneric_2() {
 	var slice = []T{{3, "c"}, {}, {2, "b"}, {9, "f"}}
 	fmt.Println(ContainsAllGeneric(slice))
 	fmt.Println(ContainsAllGeneric(slice, T{}))
@@ -25,6 +17,10 @@ func ExampleContainsAllGeneric_2() {
 	fmt.Println(ContainsAllGeneric(slice, T{2, "c"}))
 	fmt.Println(ContainsAllGeneric(slice, 2))
 	// Output:
+	// true
+	// false
+	// true
+	// false
 	// true
 	// true
 	// true
@@ -51,12 +47,27 @@ func ExampleContainsAllInterface() {
 	// true
 	// false
 }
+
 func ExampleContainsAllString() {
 	fmt.Println(ContainsAllString([]string{"1", "2"}))
 	fmt.Println(ContainsAllString([]string{"1", "2"}, "1"))
 	fmt.Println(ContainsAllString([]string{"1", "2"}, "2", "1"))
 	fmt.Println(ContainsAllString([]string{"1", "2"}, "2", "3"))
 	fmt.Println(ContainsAllString([]string{"1", "2"}, "3", "4"))
+	// Output:
+	// true
+	// true
+	// true
+	// false
+	// false
+}
+
+func ExampleContainsAllBool() {
+	fmt.Println(ContainsAllBool([]bool{true, false}))
+	fmt.Println(ContainsAllBool([]bool{true, false}, true))
+	fmt.Println(ContainsAllBool([]bool{true, false}, false, true))
+	fmt.Println(ContainsAllBool([]bool{true, true}, true, false))
+	fmt.Println(ContainsAllBool([]bool{false}, true, false))
 	// Output:
 	// true
 	// true

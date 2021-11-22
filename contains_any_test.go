@@ -10,14 +10,6 @@ func ExampleContainsAnyGeneric() {
 	fmt.Println(ContainsAnyGeneric(nil, T{}))
 	fmt.Println(ContainsAnyGeneric([]bool{}))
 	fmt.Println(ContainsAnyGeneric([]bool{}, "xx"))
-	// Output:
-	// false
-	// false
-	// false
-	// false
-}
-
-func ExampleContainsAnyGeneric_2() {
 	var slice = []T{{3, "c"}, {}, {2, "b"}, {9, "f"}}
 	fmt.Println(ContainsAnyGeneric(slice))
 	fmt.Println(ContainsAnyGeneric(slice, T{}))
@@ -25,6 +17,10 @@ func ExampleContainsAnyGeneric_2() {
 	fmt.Println(ContainsAnyGeneric(slice, T{2, "c"}, T{}))
 	fmt.Println(ContainsAnyGeneric(slice, 2))
 	// Output:
+	// false
+	// false
+	// false
+	// false
 	// false
 	// true
 	// true
@@ -65,6 +61,20 @@ func ExampleContainsAnyString() {
 	fmt.Println(ContainsAnyString(slice))
 	fmt.Println(ContainsAnyString(slice, `x`, `0`))
 	fmt.Println(ContainsAnyString(slice, `x`, `2`))
+	// Output:
+	// false
+	// false
+	// false
+	// false
+	// true
+}
+
+func ExampleContainsAnyBool() {
+	fmt.Println(ContainsAnyBool(nil))
+	fmt.Println(ContainsAnyBool(nil, false))
+	fmt.Println(ContainsAnyBool([]bool{true, false}))
+	fmt.Println(ContainsAnyBool([]bool{true, true}, false))
+	fmt.Println(ContainsAnyBool([]bool{true, false}, false))
 	// Output:
 	// false
 	// false

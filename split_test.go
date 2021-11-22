@@ -1,6 +1,9 @@
 package slice
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 func ExampleSplitGeneric() {
 	fmt.Println(SplitGeneric([]T{}, T{}))
@@ -21,6 +24,28 @@ func ExampleSplitGeneric() {
 	// [[{1 a} {2 b}] [{3 c}]]
 	// [[{1 a} {2 b}] [{3 c} {4 d}]]
 	// [[{1 a} {2 b}] [{3 c} {4 d}] []]
+}
+
+func ExampleSplitValue() {
+	fmt.Println(SplitValue(reflect.ValueOf([]T{}), T{}))
+	fmt.Println(SplitValue(reflect.ValueOf([]T{T{}}), T{}))
+	fmt.Println(SplitValue(reflect.ValueOf([]T{T{1, "a"}}), T{}))
+	fmt.Println(SplitValue(reflect.ValueOf([]T{T{1, "a"}, T{2, "b"}}), T{}))
+	fmt.Println(SplitValue(reflect.ValueOf([]T{T{1, "a"}, T{2, "b"}, T{}}), T{}))
+	fmt.Println(SplitValue(reflect.ValueOf([]T{T{1, "a"}, T{2, "b"}, T{}, T{3, "c"}}), T{}))
+	fmt.Println(SplitValue(reflect.ValueOf([]T{T{1, "a"}, T{2, "b"}, T{}, T{3, "c"}, T{4, "d"}}), T{}))
+	fmt.Println(SplitValue(reflect.ValueOf([]T{T{1, "a"}, T{2, "b"}, T{}, T{3, "c"}, T{4, "d"}, T{}}), T{}))
+
+	// Output:
+	// []
+	// [[] []]
+	// [[{1 a}]]
+	// [[{1 a} {2 b}]]
+	// [[{1 a} {2 b}] []]
+	// [[{1 a} {2 b}] [{3 c}]]
+	// [[{1 a} {2 b}] [{3 c} {4 d}]]
+	// [[{1 a} {2 b}] [{3 c} {4 d}] []]
+
 }
 
 func ExampleSplitInterface() {
@@ -63,6 +88,27 @@ func ExampleSplitString() {
 	// [[a b] [c]]
 	// [[a b] [c d]]
 	// [[a b] [c d] []]
+}
+
+func ExampleSplitBool() {
+	fmt.Println(SplitBool([]bool{}, false))
+	fmt.Println(SplitBool([]bool{false}, false))
+	fmt.Println(SplitBool([]bool{true}, false))
+	fmt.Println(SplitBool([]bool{true, true}, false))
+	fmt.Println(SplitBool([]bool{true, true, false}, false))
+	fmt.Println(SplitBool([]bool{true, true, false, true}, false))
+	fmt.Println(SplitBool([]bool{true, true, false, true, true}, false))
+	fmt.Println(SplitBool([]bool{true, true, false, true, true, false}, false))
+
+	// Output:
+	// []
+	// [[] []]
+	// [[true]]
+	// [[true true]]
+	// [[true true] []]
+	// [[true true] [true]]
+	// [[true true] [true true]]
+	// [[true true] [true true] []]
 }
 
 func ExampleSplitInt() {

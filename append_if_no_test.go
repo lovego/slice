@@ -51,6 +51,16 @@ func ExampleAppendIfNoString() {
 	// [a b c]
 }
 
+func ExampleAppendIfNoBool() {
+	fmt.Println(AppendIfNoBool(nil, true))
+	fmt.Println(AppendIfNoBool([]bool{true, false}, true))
+	fmt.Println(AppendIfNoBool([]bool{true, true}, true, false))
+	// Output:
+	// [true]
+	// [true false]
+	// [true true false]
+}
+
 func ExampleAppendIfNoInt() {
 	fmt.Println(AppendIfNoInt(nil, 1))
 	fmt.Println(AppendIfNoInt([]int{1, 2}, 1))

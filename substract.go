@@ -54,6 +54,20 @@ func SubstractString(left, right []string) []string {
 	return result
 }
 
+// SubstractBool substracts right from left.
+func SubstractBool(left, right []bool) []bool {
+	var result []bool
+	if len(left) == 0 {
+		return result
+	}
+	for _, v := range left {
+		if !ContainsBool(right, v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
 // SubstractInt substracts right from left.
 func SubstractInt(left, right []int) []int {
 	var result []int

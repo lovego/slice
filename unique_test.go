@@ -2,10 +2,17 @@ package slice
 
 import (
 	"fmt"
+	"reflect"
 )
 
 func ExampleUniqueGeneric() {
 	fmt.Println(UniqueGeneric([]T{{1, `a`}, {2, `b`}, {}, {3, `c`}, {2, `b`}, {3, `c`}}))
+	// Output:
+	// [{1 a} {2 b} {0 } {3 c}]
+}
+
+func ExampleUniqueValue() {
+	fmt.Println(UniqueValue(reflect.ValueOf(&[]T{{1, `a`}, {2, `b`}, {}, {3, `c`}, {2, `b`}, {3, `c`}})))
 	// Output:
 	// [{1 a} {2 b} {0 } {3 c}]
 }
@@ -20,6 +27,12 @@ func ExampleUniqueString() {
 	fmt.Println(UniqueString([]string{`0`, `a`, `a`, `b`, `b`, `c`, `c`, `d`}))
 	// Output:
 	// [0 a b c d]
+}
+
+func ExampleUniqueBool() {
+	fmt.Println(UniqueBool([]bool{true, true, false}))
+	// Output:
+	// [true false]
 }
 
 func ExampleUniqueInt() {

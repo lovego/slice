@@ -16,12 +16,12 @@ func IntersectGeneric(left, right interface{}) interface{} {
 func IntersectValue(left, right reflect.Value) reflect.Value {
 	var result = reflect.Zero(left.Type())
 	length := left.Len()
-	if length == 0 || right.Len() == 0 {
+	if length == 0 || !right.IsValid() || right.Len() == 0 {
 		return result
 	}
 	for i := 0; i < length; i++ {
 		v := left.Index(i)
-		if right.IsValid() && ContainsValue(right, v.Interface()) {
+		if ContainsValue(right, v.Interface()) {
 			result = reflect.Append(result, v)
 		}
 	}
@@ -52,6 +52,21 @@ func IntersectString(left, right []string) []string {
 	}
 	for _, v := range left {
 		if ContainsString(right, v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
+// IntersectBool returns intersection of left and right, in the left order.
+// The duplicate members in left are kept.
+func IntersectBool(left, right []bool) []bool {
+	var result []bool
+	if len(left) == 0 || len(right) == 0 {
+		return result
+	}
+	for _, v := range left {
+		if ContainsBool(right, v) {
 			result = append(result, v)
 		}
 	}

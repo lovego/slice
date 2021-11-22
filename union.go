@@ -65,6 +65,19 @@ func UnionString(left, right []string) []string {
 	return result
 }
 
+// UnionBool returns union set of left and right, with right follows left.
+// The duplicate members in left are kept.
+func UnionBool(left, right []bool) []bool {
+	result := make([]bool, len(left))
+	copy(result, left)
+	for _, v := range right {
+		if !ContainsBool(result, v) {
+			result = append(result, v)
+		}
+	}
+	return result
+}
+
 // UnionInt returns union set of left and right, with right follows left.
 // The duplicate members in left are kept.
 func UnionInt(left, right []int) []int {

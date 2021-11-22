@@ -2,6 +2,7 @@ package slice
 
 import (
 	"fmt"
+	"reflect"
 )
 
 func ExampleIntersectGeneric() {
@@ -11,6 +12,17 @@ func ExampleIntersectGeneric() {
 	fmt.Println(IntersectGeneric(left, []T{{}, {2, "b"}}))
 	// Output:
 	// <nil>
+	// []slice.T(nil)
+	// [{0 } {2 b} {2 b}]
+}
+
+func ExampleIntersectValue() {
+	var left = reflect.ValueOf([]T{{3, "c"}, {}, {2, "b"}, {9, "f"}, {2, "b"}})
+	fmt.Println(IntersectValue(left, reflect.ValueOf(nil)))
+	fmt.Printf("%#v\n", IntersectValue(left, reflect.ValueOf([]int64{})))
+	fmt.Println(IntersectValue(left, reflect.ValueOf([]T{{}, {2, "b"}})))
+	// Output:
+	// []
 	// []slice.T(nil)
 	// [{0 } {2 b} {2 b}]
 }
@@ -34,6 +46,17 @@ func ExampleIntersectString() {
 	// Output:
 	// [a b b]
 	// []
+	// []
+}
+
+func ExampleIntersectBool() {
+	var left = []bool{true, false, true}
+	fmt.Println(IntersectBool(left, []bool{false, true}))
+	fmt.Println(IntersectBool(left, []bool{true, true}))
+	fmt.Println(IntersectBool(left, nil))
+	// Output:
+	// [true false true]
+	// [true true]
 	// []
 }
 

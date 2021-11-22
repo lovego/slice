@@ -34,6 +34,15 @@ func AppendIfNoString(slice []string, targets ...string) []string {
 	return slice
 }
 
+func AppendIfNoBool(slice []bool, targets ...bool) []bool {
+	for _, target := range targets {
+		if IndexBool(slice, target) < 0 {
+			slice = append(slice, target)
+		}
+	}
+	return slice
+}
+
 func AppendIfNoInt(slice []int, targets ...int) []int {
 	for _, target := range targets {
 		if IndexInt(slice, target) < 0 {

@@ -52,6 +52,22 @@ func SplitString(slice []string, sep string) (result [][]string) {
 	}
 	return
 }
+
+func SplitBool(slice []bool, sep bool) (result [][]bool) {
+	start := 0
+	for i, v := range slice {
+		if v == sep {
+			result = append(result, slice[start:i])
+			start = i + 1
+		}
+	}
+
+	if len(slice) > 0 {
+		result = append(result, slice[start:len(slice)])
+	}
+	return
+}
+
 func SplitInt(slice []int, sep int) (result [][]int) {
 	start := 0
 	for i, v := range slice {

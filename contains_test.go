@@ -63,6 +63,17 @@ func ExampleContainsString() {
 	// false
 }
 
+func ExampleContainsBool() {
+	var slice = []bool{true, false, true}
+	fmt.Println(ContainsBool(slice, false))
+	fmt.Println(ContainsBool(slice, true))
+	fmt.Println(ContainsBool([]bool{true}, false))
+	// Output:
+	// true
+	// true
+	// false
+}
+
 func ExampleContainsInt() {
 	var slice = []int{1, 2, 3}
 	fmt.Println(ContainsInt(slice, 2))

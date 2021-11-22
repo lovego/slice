@@ -49,6 +49,18 @@ func UniqueString(slice []string) []string {
 }
 
 // Input slice will be modified.
+func UniqueBool(slice []bool) []bool {
+	j := 0
+	for _, v := range slice {
+		if !ContainsBool(slice[0:j], v) {
+			slice[j] = v
+			j++
+		}
+	}
+	return slice[:j]
+}
+
+// Input slice will be modified.
 func UniqueInt(slice []int) []int {
 	j := 0
 	for _, v := range slice {

@@ -2,6 +2,7 @@ package slice
 
 import (
 	"fmt"
+	"reflect"
 )
 
 func ExampleSubstractGeneric() {
@@ -13,6 +14,18 @@ func ExampleSubstractGeneric() {
 
 	// Output:
 	// <nil>
+	// []
+	// [{3 c} {0 } {2 b} {9 f} {3 c}]
+	// [{3 c} {9 f} {3 c}]
+}
+
+func ExampleSubstractValue() {
+	fmt.Println(SubstractValue(reflect.ValueOf([]T{}), reflect.ValueOf(nil)))
+	var left = []T{{3, "c"}, {}, {2, "b"}, {9, "f"}, {3, "c"}}
+	fmt.Println(SubstractValue(reflect.ValueOf(left), reflect.ValueOf(nil)))
+	fmt.Println(SubstractValue(reflect.ValueOf(left), reflect.ValueOf([]T{{}, {2, "b"}, {2, "c"}})))
+
+	// Output:
 	// []
 	// [{3 c} {0 } {2 b} {9 f} {3 c}]
 	// [{3 c} {9 f} {3 c}]
@@ -31,6 +44,7 @@ func ExampleSubstractInterface() {
 	// [a b 3 a]
 	// [a b 3 a]
 }
+
 func ExampleSubstractString() {
 	fmt.Println(SubstractString(nil, []string{"a"}))
 	fmt.Println(SubstractString([]string{"a", "b", "c", "a"}, []string{"b"}))
@@ -43,6 +57,20 @@ func ExampleSubstractString() {
 	// [b]
 	// [a b c a]
 	// [a b c a]
+}
+
+func ExampleSubstractBool() {
+	fmt.Println(SubstractBool(nil, []bool{false}))
+	fmt.Println(SubstractBool([]bool{true, false, true}, []bool{false}))
+	fmt.Println(SubstractBool([]bool{true, false, true}, []bool{true, false}))
+	fmt.Println(SubstractBool([]bool{true, false, true}, nil))
+	fmt.Println(SubstractBool([]bool{true, false, true}, []bool{true}))
+	// Output:
+	// []
+	// [true true]
+	// []
+	// [true false true]
+	// [false]
 }
 
 func ExampleSubstractInt() {

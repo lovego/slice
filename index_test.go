@@ -79,6 +79,17 @@ func ExampleIndexString() {
 	// 2
 }
 
+func ExampleIndexBool() {
+	slice := []bool{true, false, true}
+	fmt.Println(IndexBool(nil, false))
+	fmt.Println(IndexBool(slice, true))
+	fmt.Println(IndexBool(slice, false))
+	// Output:
+	// -1
+	// 0
+	// 1
+}
+
 func ExampleIndexInt() {
 	slice := []int{1, 2, 3}
 	fmt.Println(IndexInt(nil, 3))

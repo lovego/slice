@@ -45,6 +45,15 @@ func LastIndexString(slice []string, target string) int {
 	return -1
 }
 
+func LastIndexBool(slice []bool, target bool) int {
+	for i := len(slice) - 1; i >= 0; i-- {
+		if slice[i] == target {
+			return i
+		}
+	}
+	return -1
+}
+
 func LastIndexInt(slice []int, target int) int {
 	for i := len(slice) - 1; i >= 0; i-- {
 		if slice[i] == target {

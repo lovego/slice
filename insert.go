@@ -41,6 +41,17 @@ func InsertString(slice []string, i int, value string) []string {
 	return slice
 }
 
+// InsertBool insert value at index i, it panics if i > len(slice).
+// The input slice will be modified.
+func InsertBool(slice []bool, i int, value bool) []bool {
+	slice = append(slice, value)
+	if i != len(slice)-1 {
+		copy(slice[i+1:], slice[i:len(slice)-1])
+		slice[i] = value
+	}
+	return slice
+}
+
 // InsertInt insert value at index i, it panics if i > len(slice).
 // The input slice will be modified.
 func InsertInt(slice []int, i int, value int) []int {

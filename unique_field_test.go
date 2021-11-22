@@ -18,6 +18,14 @@ func ExampleUniqueFieldString() {
 	// [a b c]
 }
 
+func ExampleUniqueFieldBool() {
+	type t struct{ Flag bool }
+	slice := []t{{true}, {true}}
+	fmt.Println(UniqueFieldBool(slice, "Flag"))
+	// Output:
+	// [true]
+}
+
 func ExampleUniqueFieldInt() {
 	slice := []T{{1, "a"}, {2, "a"}, {1, "b"}, {3, "c"}}
 	fmt.Println(UniqueFieldInt(slice, "Id"))

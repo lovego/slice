@@ -56,6 +56,17 @@ func ExampleLastIndexString() {
 	// -1
 }
 
+func ExampleLastIndexBool() {
+	fmt.Println(LastIndexBool([]bool{}, false))
+	slice := []bool{true, false, false, true}
+	fmt.Println(LastIndexBool(slice, true))
+	fmt.Println(LastIndexBool(slice, false))
+	// Output:
+	// -1
+	// 3
+	// 2
+}
+
 func ExampleLastIndexInt() {
 	slice := []int{1, 2, 3, 1, 2}
 	fmt.Println(LastIndexInt(slice, 1))
